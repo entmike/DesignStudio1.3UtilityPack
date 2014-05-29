@@ -1,0 +1,247 @@
+class com.sample.utilities.SlideShow extends Component {
+	/* Returns the last clicked slide */
+	String getSlideClicked() {*
+		return this.slideClicked;
+	*}
+	/* Set the Caption Text for a Slide number */
+	void setCaption( /* Caption Text */ String caption, /* Index */ int index){*
+		this["caption"+index] = caption;
+	*}
+	/* Set the URL of an Image for a Slide number */
+	void setImageSrc( /* Image URL */ String src, /* Index */ int index){*
+		this["src"+index] = src;
+	*}
+}
+
+class com.sample.utilities.HTMLTemplate extends Component {
+	/* Returns the current value */
+	String getHTML() {*
+		return this.HTML;
+	*}
+
+	/* Sets the value */
+	void setHTML(/* HTML */ String html) {*
+		this.HTML = html;
+	*}
+	
+	void setTerm( /* Placeholder Text */ String term, /* Index */ int index){*
+		this["term"+index] = term;
+	*}
+	void setReplacement( /* Placeholder Text */ String replacement, /* Index */ int index){*
+		this["replacement"+index] = replacement;
+	*}
+}
+
+class com.sample.utilities.SuperImage extends Component {
+	/**
+	 * Sets Source URL Property
+	 */	
+	void setSrc( /* Source URL or Base-64 String */ String s){*
+		this.src = s;
+	*}
+	/**
+	 * Gets Source URL Property
+	 */	
+	String getSrc() {*
+		return this.src;
+	*}
+}
+
+class com.sample.utilities.DoubleSidedTile extends Component {
+	/* Returns the current value */
+	String getFrontHTML() {*
+		return this.frontHTML;
+	*}
+
+	/* Sets the value */
+	void setFrontHTML(/* HTML */ String html) {*
+		this.frontHTML = html;
+	*}
+	/* Returns the current value */
+	String getBackHTML() {*
+		return this.backHTML;
+	*}
+
+	/* Sets the value */
+	void setBackHTML(/* HTML */ String html) {*
+		this.backHTML = html;
+	*}
+	void setTerm( /* Placeholder Text */ String term, /* Index */ int index){*
+		this["term"+index] = term;
+	*}
+	void setReplacement( /* Placeholder Text */ String replacement, /* Index */ int index){*
+		this["replacement"+index] = replacement;
+	*}
+}
+
+class com.sample.utilities.HighCharts extends Component {
+}
+
+
+class com.sample.utilities.KpiTile extends Component {
+	
+	/* Sets the header text. */
+	void setHeaderText(/* Header text */ String text) {*
+		this.headerText = text;
+	*}	
+
+	/* Returns the header text. */
+	String getHeaderText() {*
+		return this.headerText;
+	*}
+
+	/* Shows or hides the header. */
+	void setHeaderVisible(/* If true, then the header is shown, else it is hidden */ boolean isHeaderVisible) {*
+		this.headerVisible = isHeaderVisible;
+	*}	
+
+	/* Returns true if the header is shown, else false. */
+	boolean isHeaderVisible() {*
+		return this.headerVisible;
+	*}
+
+	/* Sets the header CSS class. */
+	void setHeaderCssClass(/* Header CSS class */ String cssClass) {*
+		this.headerCssClass = cssClass;
+	*}	
+
+	/* Returns the header CSS class. */
+	String getHeaderCssClass() {*
+		return this.headerCssClass;
+	*}
+
+	/* Sets the title text. */
+	void setTitleText(/* Title text */ String text) {*
+		this.titleText = text;
+	*}	
+
+	/* Returns the title text. */
+	String getTitleText() {*
+		return this.titleText;
+	*}
+
+	/* Sets the title CSS class. */
+	void setTitleCssClass(/* Title CSS class */ String cssClass) {*
+		this.titleCssClass = cssClass;
+	*}	
+
+	/* Returns the title CSS class. */
+	String getTitleCssClass() {*
+		return this.titleCssClass;
+	*}
+
+	/* Sets the value prefix text. */
+	void setValuePrefixText(/* Value prefix text */ String text) {*
+		this.valuePrefixText = text;
+	*}	
+
+	/* Returns the value prefix text. */
+	String getValuePrefixText() {*
+		return this.valuePrefixText;
+	*}
+
+	/* Sets the value prefix CSS class. */
+	void setValuePrefixCssClass(/* Value prefix CSS class */ String cssClass) {*
+		this.valuePrefixCssClass = cssClass;
+	*}	
+
+	/* Returns the value prefix CSS class. */
+	String getValuePrefixCssClass() {*
+		return this.valuePrefixCssClass;
+	*}
+
+	/* Sets the value text. */
+	void setValueText(/* Value text */ String text) {*
+		this.valueText = text;
+	*}	
+
+	/* Returns the value text. */
+	String getValueText() {*
+		return this.valueText;
+	*}
+
+	/* Sets the value CSS class. */
+	void setValueCssClass(/* Value CSS class */ String cssClass) {*
+		this.valueCssClass = cssClass;
+	*}	
+
+	/* Returns the current value CSS class. */
+	String getValueCssClass() {*
+		return this.valueCssClass;
+	*}
+
+	/* Sets the value horizontal alignment. */
+	void setValueHAlign(/* Value horizontal alignment */ String hAlign) {*
+		this.valueHAlign = hAlign;
+	*}
+
+	/* Returns the value horizontal alignment. */
+	String getValueHAlign() {*
+		return this.valueHAlign;
+	*}
+
+	/* Sets the value decimal places. */
+	void setValueDecimalPlaces(/* Number of decimal places */ int decimalPlaces) {*
+		this.valueDecimalPlaces = decimalPlaces;
+	*}
+
+	/* Returns the value decimal places. */
+	int getValueDecimalPlaces() {*
+		return this.valueDecimalPlaces;
+	*}
+
+	/* Sets the value suffix text. */
+	void setValueSuffixText(/* Value suffix text */ String text) {*
+		this.valueSuffixText = text;
+	*}	
+
+	/* Returns the value suffix text. */
+	String getValueSuffixText() {*
+		return this.valueSuffixText;
+	*}
+
+	/* Sets the value suffix CSS class. */
+	void setValueSuffixCssClass(/* Value suffix CSS class */ String cssClass) {*
+		this.valueSuffixCssClass = cssClass;
+	*}	
+
+	/* Returns the value suffix CSS class. */
+	String getValueSuffixCssClass() {*
+		return this.valueSuffixCssClass;
+	*}
+
+	/* Sets the footer text. */
+	void setFooterText(/* Footer text */ String text) {*
+		this.footerText = text;
+	*}	
+
+	/* Returns the footer text. */
+	String getFooterText() {*
+		return this.footerText;
+	*}
+
+	/* Sets the footer CSS class. */
+	void setFooterCssClass(/* Footer CSS class */ String cssClass) {*
+		this.footerCssClass = cssClass;
+	*}
+
+	/* Returns the footer CSS class. */
+	String getFooterCssClass() {*
+		return this.footerCssClass;
+	*}
+
+	/* Sets the footer horizontal alignment. */
+	void setFooterHAlign(/* Footer horizontal alignment */ String hAlign) {*
+		this.footerHAlign = hAlign;
+	*}
+
+	/* Returns the footer horizontal alignment. */
+	String getFooterHAlign() {*
+		return this.footerHAlign;
+	*}
+
+	/* Sets the data cell whose value is displayed. */
+	void setDataSelection(/* Data cell tha tcontains the value displayed */ ResultCellSelection cellSelection) {*
+		this.data = this.stringifySelection(cellSelection);
+	*}
+}
