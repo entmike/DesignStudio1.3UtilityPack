@@ -16,6 +16,10 @@
 		<property type="ResultCellSet" title="Chart Selection" id="chartSelection"/>
 	</component>
 	 -->
+	 <component id="GeoChart" title="Google Geocharts" handlerType = "div" icon="res/map.png" group="sampleutilities">
+	 	<jsInclude>https://www.google.com/jsapi</jsInclude>
+	 	<jsInclude>res/js/geochart.js</jsInclude>
+	 </component>
 	<component id="SlideShow" title="Slide Show" handlerType="div" icon="res/doubleSidedTile.png" group="sampleutilities">
 		<jsInclude>res/js/jssor/js/jssor.core.js</jsInclude>
 		<jsInclude>res/js/jssor/js/jssor.utils.js</jsInclude>
