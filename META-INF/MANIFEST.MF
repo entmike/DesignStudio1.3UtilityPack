@@ -4,4 +4,4 @@ Bundle-Name: Design Studio Utilities
 Bundle-SymbolicName: com.sample.utilities;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: com.sap.ip.bi.zen.rt.components.sdk.eclipse
-Bundle-Vendor: Mike Howles
+Bundle-Vendor: Mike Howles, Leandro Cardoso

@@ -3,7 +3,7 @@
 	id="com.sample.utilities"
 	title="Design Studio Utilities"
 	version="1.0"
-	vendor="Mike Howles"
+	vendor="Mike Howles, Leandro Cardoso"
 	>
 	<group
 		id="sampleutilities"
@@ -16,9 +16,82 @@
 		<property type="ResultCellSet" title="Chart Selection" id="chartSelection"/>
 	</component>
 	 -->
+	 <!-- 
+	 <component id="FoldedPyramid" title="Folded Pyramid" handlerType = "div" icon="highCharts.png" group="sampleutilities">
+	 	<stdInclude kind="d3"/>
+	 	<jsInclude>res/js/foldedPyramid.js</jsInclude>
+	 	<cssInclude>res/css/foldedPyramid.css</cssInclude>
+	 	<initialization>
+			<defaultValue property="HEIGHT">400</defaultValue>
+			<defaultValue property="WIDTH">300</defaultValue>
+		</initialization>
+	 </component>
+	  -->
+	  <component id="Notify" title="Notify" handlerType = "div" icon="res/noty.png" group="sampleutilities"
+	  tooltip="Notify - LeandroIsTheBest" >
+	  	<jsInclude>res/js/noty.js</jsInclude>
+    	<jsInclude>res/js/noty/packaged/jquery.noty.packaged.min.js</jsInclude>
+	  	<property type="String" title="msgtext" id="msgtext" visible="false" />
+		<property type="String" title="shownote" id="shownote" visible="false" />
+		<property type="String" title="msgtype" id="msgtype" visible="false" />
+		<property type="int" title="Delay(Seconds)" id="delay" group="Display"/>
+		<property type="String" title="Layout" id="layout" group="Display">
+		    <possibleValue>top</possibleValue>
+		       <possibleValue>topCenter</possibleValue>
+		       <possibleValue>topLeft</possibleValue>
+		       <possibleValue>topRight</possibleValue>
+		       <possibleValue>center</possibleValue>
+		       <possibleValue>centerLeft</possibleValue>
+		       <possibleValue>centerRight</possibleValue>
+		       <possibleValue>bottom</possibleValue>
+		       <possibleValue>bottomCenter</possibleValue>
+		       <possibleValue>bottomLeft</possibleValue>
+		       <possibleValue>bottomRight</possibleValue>
+			</property>
+		<property type="String" title="Modal" id="modal" group="Display"> 
+		       <possibleValue>true</possibleValue>
+		       <possibleValue>false</possibleValue>
+			</property>
+		   <initialization>
+		     <defaultValue property="WIDTH">100</defaultValue>
+		     <defaultValue property="HEIGHT">100</defaultValue>  
+		     <defaultValue property="layout">center</defaultValue>
+		     <defaultValue property="modal">false</defaultValue> 
+		     <defaultValue property="delay">3</defaultValue> 
+		   </initialization>
+	  </component>
+	  <component id="Topo" title="TopoJSON Test" handlerType = "div" icon="res/map.png" group="sampleutilities">
+	  	<jsInclude>res/js/require/require.js</jsInclude>
+	  	<jsInclude>res/js/topo.js</jsInclude>
+	  	<cssInclude>res/css/topo.css</cssInclude>
+	  	<initialization>
+			<defaultValue property="HEIGHT">400</defaultValue>
+			<defaultValue property="WIDTH">300</defaultValue>
+		</initialization>
+	  </component>
+	  <component id="PackedCircles" title="Packed Circles" handlerType = "div" icon="res/packedCircles.png" group="sampleutilities" databound="true">
+		  <stdInclude kind="d3"/>
+		  <jsInclude>res/js/packedcircles.js</jsInclude>
+		  <jsInclude>res/js/d3.plugins/interpolate-zoom.js</jsInclude>
+		  <jsInclude>res/js/require/require.js</jsInclude>
+		  <cssInclude>res/css/packedcircles.css</cssInclude>
+		  <property type="ResultCellSet" title="Sizes" id="sizes"/>
+		  <property type="boolean" title="Flatten" id="flatten" tooltip="Flatten Hierarchy"/>
+		  <property type="boolean" title="Hide Labels" id="hideLabels" tooltip="Flatten Hierarchy"/>
+		  <initialization>
+				<defaultValue property="HEIGHT">400</defaultValue>
+				<defaultValue property="WIDTH">300</defaultValue>
+				<defaultValue property="flatten">false</defaultValue>
+				<defaultValue property="hideLabels">false</defaultValue>
+		  </initialization>
+	  </component>
 	 <component id="GeoChart" title="Google Geocharts" handlerType = "div" icon="res/map.png" group="sampleutilities">
 	 	<jsInclude>https://www.google.com/jsapi</jsInclude>
 	 	<jsInclude>res/js/geochart.js</jsInclude>
+	 	<initialization>
+			<defaultValue property="HEIGHT">400</defaultValue>
+			<defaultValue property="WIDTH">300</defaultValue>
+		</initialization>
 	 </component>
 	<component id="SlideShow" title="Slide Show" handlerType="div" icon="res/doubleSidedTile.png" group="sampleutilities">
 		<jsInclude>res/js/jssor/js/jssor.core.js</jsInclude>

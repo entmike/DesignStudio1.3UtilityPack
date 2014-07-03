@@ -1,0 +1,43 @@
+.parent circle, .leaf circle {
+  stroke: rgb(31, 119, 180);
+  stroke-width: 1px;
+}
+
+.parent circle {
+  fill: rgb(31, 119, 180);
+  fill-opacity: .25;
+}
+
+.leaf circle {
+  fill: #ff7f0e;
+  fill-opacity: 1;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+
+.zoomNode {
+  cursor: pointer;
+}
+.zoomNode:hover {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.zoomNode--leaf {
+  fill: white;
+}
+
+.zoomLabel {
+  font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.zoomLabel,
+.zoomNode--root,
+.zoomNode--leaf {
+  pointer-events: none;
+}

@@ -16,7 +16,7 @@ sap.designstudio.sdk.Component.subclass("com.sample.utilities.GeoChart", functio
         var domId = this.$().attr("id");
         // Attach chart to DOM element, NOT jQuery object.
         this.chart = new google.visualization.GeoChart(this.$()[0]);
-        this.chart.draw(data, options);  
+        this.chart.draw(data, options);
     };      
       
     this.init = function() {

@@ -1,0 +1,41 @@
+.foldedPyramid {
+  font: 10px sans-serif;
+}
+
+.foldedPyramid .y.axis path {
+  display: none;
+}
+
+.foldedPyramid .y.axis line {
+  stroke: #fff;
+  stroke-opacity: .2;
+  shape-rendering: crispEdges;
+}
+
+.foldedPyramid .y.axis .zero line {
+  stroke: #000;
+  stroke-opacity: 1;
+}
+
+.foldedPyramid .title {
+  font: 300 78px Helvetica Neue;
+  fill: #666;
+}
+
+.foldedPyramid .birthyear,
+.age {
+  text-anchor: middle;
+}
+
+.foldedPyramid .birthyear {
+  fill: #fff;
+}
+
+.foldedPyramid rect {
+  fill-opacity: .6;
+  fill: #e377c2;
+}
+
+.foldedPyramid rect:first-child {
+  fill: #1f77b4;
+}
