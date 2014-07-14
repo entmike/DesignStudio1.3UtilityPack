@@ -3,11 +3,8 @@ com.sample.utilities
 
 A package of Design Studio Utility Addons:
 
-SlideShow - A slideshow component using JSSOR library
-SuperImage - An SAPUI5 extended Image component with a Base-64 encoding property sheet
-HTMLTemplate - HTML and JavaScript inject for pre-SDK prototyping
-DoubleSidedTile - Like HTMLTemplate, but it flips, because it's fun.
-HighCharts - Highcharts Chart wrapper - Be sure you have a Highcharts license if you use in production
+Details of addons and author attributions can be found here:
+http://scn.sap.com/community/businessobjects-design-studio/blog/2014/05/29/design-studio-1213-sdk--design-studio-utility-pack
 
 Free as in free beer.
 

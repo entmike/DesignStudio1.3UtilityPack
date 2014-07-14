@@ -3,7 +3,7 @@
 	id="com.sample.utilities"
 	title="Design Studio Utilities"
 	version="1.0"
-	vendor="Mike Howles, Leandro Cardoso"
+	vendor="Mike Howles, Leandro Cardoso, Antonino Cacace"
 	>
 	<group
 		id="sampleutilities"
@@ -27,8 +27,48 @@
 		</initialization>
 	 </component>
 	  -->
+	  <component id="Speedometer" title="Speedometer" tooltip="Displays a speedometer - Antonino Cacace" icon="res/speedometer.png" group="sampleutilities" handlerType="div">
+		<jsInclude>res/js/speedometer.js</jsInclude>
+		<property id="haveNumbers" title="Show Number" type="boolean"/>
+		<property type="int" title="Number of Big Ticks" id="numOfBigTicks"/>
+		<property type="int" title="Number of Small Ticks" id="numOfSmallTicks"/>
+		<property type="float" title="Indicator Position" id="indicator"/>
+		<property type="boolean" title="Show Value" id="showValue"/>
+		<property type="String" title="Showed Value" id="showedValue"/>
+		<property type="Color" title="Needle Color" id="needleColor"/>
+		<property type="String" title="Title" id="title"/>
+		<property type="int" title="Start Value" id="startValue"/>
+		<property type="int" title="End Value" id="endValue"/>
+		<property type="boolean" title="Gradient Color" id="gradientColor"/>
+		<property type="Color" title="First Color" id="firstColor"/>
+		<property type="Color" title="Second Color" id="secondColor"/>
+		<property type="Color" title="Third Color" id="thirdColor"/>
+		<property type="int" title="Start of Second Color" id="startSecondColor"/>
+		<property type="int" title="Start of Third Color" id="startThirdColor"/>
+		<initialization>
+			<defaultValue property="WIDTH">300</defaultValue>
+			<defaultValue property="HEIGHT">300</defaultValue>
+			<defaultValue property="showNumbers">false</defaultValue>
+			<defaultValue property="numOfBigTicks">5</defaultValue>
+			<defaultValue property="numOfSmallTicks">2</defaultValue>
+			<defaultValue property="indicator">1</defaultValue>
+			<defaultValue property="showedValue">No Value</defaultValue>
+			<defaultValue property="needleColor">#D80000</defaultValue>
+			<defaultValue property="title">Insert Title Here</defaultValue>
+			<defaultValue property="showValue">false</defaultValue>
+			<defaultValue property="startValue">0</defaultValue>
+			<defaultValue property="endValue">100</defaultValue>
+			<defaultValue property="gredientColor">true</defaultValue>
+			<defaultValue property="firstColor">#FA1E1E</defaultValue>
+			<defaultValue property="secondColor">#FCFA4E</defaultValue>
+			<defaultValue property="thirdColor">#2BFC23</defaultValue>
+			<defaultValue property="startSecondColor">20</defaultValue>
+			<defaultValue property="startThirdColor">80</defaultValue>
+			
+		</initialization>
+	</component>
 	  <component id="Notify" title="Notify" handlerType = "div" icon="res/noty.png" group="sampleutilities"
-	  tooltip="Notify - LeandroIsTheBest" >
+	  tooltip="Notify - Leandro Cardoso" >
 	  	<jsInclude>res/js/noty.js</jsInclude>
     	<jsInclude>res/js/noty/packaged/jquery.noty.packaged.min.js</jsInclude>
 	  	<property type="String" title="msgtext" id="msgtext" visible="false" />
