@@ -1,3 +1,10 @@
+class com.sample.utilities.MenuStrip extends Component {
+	/* Returns the last clicked slide */
+	String getLabelClicked() {*
+		return this.labelClicked;
+	*}
+}
+
 class com.sample.utilities.SlideShow extends Component {
 	/* Returns the last clicked slide */
 	String getSlideClicked() {*
@@ -33,6 +40,25 @@ class com.sample.utilities.HTMLTemplate extends Component {
 }
 
 class com.sample.utilities.SuperImage extends Component {
+	/**
+	* Execute some method 
+	*/
+	void someMethod( String someParameter){*
+		this.execute = "someMethod|" + someParameter + "~" + Math.random();
+	*}
+	/**
+	* Execute another method 
+	*/
+	void anotherMethod( String someParameter){*
+		this.execute = "anotherMethod|" + someParameter + "~" + Math.random();
+	*}
+	
+	 void showAlertBox(/* Text 1 */ String alertMsg1, /* Text 2 */ String alertMsg2) {*  
+  		this.zlertText1 = alertMsg1;  
+  		this.alertText2 = alertMsg2;  
+  		this.showAlert = true;
+	 *}  
+	
 	/**
 	 * Sets Source URL Property
 	 */	

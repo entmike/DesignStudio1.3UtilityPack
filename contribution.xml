@@ -27,6 +27,73 @@
 		</initialization>
 	 </component>
 	  -->
+	  <component id="MenuStrip"
+	  	title="Menu Strip"
+	  	icon="res/icon.png"
+	  	handlerType="div"
+	  	group="sampleutilities"
+	  >
+	  	<jsInclude>res/js/menustrip.js</jsInclude>
+	  	<cssInclude>res/css/menustrip.css</cssInclude>
+	  	<property id="titles" type="String" title="Titles"/>
+	  	<property id="spriteIDs" type="String" title="Sprite IDs (Optional)"/>
+	  	<property id="visibilities" type="String" title="Visibilities (Optional)"/>
+	  	<property id="fixedWidth" type="String" title="Fixed Width (-1 for auto)"/>
+	  	<property id="spriteSheet" type="Url" title="Icon Sprite Sheet (Optional)"/>
+	  	<property id="labelClicked" type="String" title="Selected Label"/>
+	  	<property id="onclick" type="ScriptText" title="On Click..." group="Events"/>
+	  	<property id="labelPlacement" type="String" title="Label Placement (Relative to Icon)">
+	  		<possibleValue>After</possibleValue>
+	  		<possibleValue>Before</possibleValue>
+	  	</property>
+	  	<property id="labelOrientation" type="String" title="Label Orientation">
+	  		<possibleValue>horizontal</possibleValue>
+	  		<possibleValue>vertical</possibleValue>
+	  	</property>
+	  	<property id="textAlign" type="String" title="Text Alignment">
+	  		<possibleValue>left</possibleValue>
+	  		<possibleValue>center</possibleValue>
+	  		<possibleValue>right</possibleValue>
+	  	</property>
+	  	<property id="verticalAlign" type="String" title="Vertical Alignment">
+	  		<possibleValue>top</possibleValue>
+	  		<possibleValue>middle</possibleValue>
+	  		<possibleValue>bottom</possibleValue>
+	  	</property>
+	  	
+	  	<property id="spriteSheetPerRow" type="int" title="Icons Sprites Per Row"/>
+	  	<!-- Didn't get around to finishing
+	  	<property id="spriteSheetHoverOffsetX" type="int" title="Hover Offset X (-1 for no offset)" />
+	  	<property id="spriteSheetHoverOffsetY" type="int" title="Hover Offset Y (-1 for no offset)" />
+	  	 -->
+	  	<property id="iconWidth" type="int" title="Icon Width (px)"/>
+	  	<property id="iconHeight" type="int" title="Icon Height (px)"/>
+	  	<initialization>
+	  		<defaultValue property="titles">Facebook,YouTube,Reddit,SAP</defaultValue>
+	  		<defaultValue property="labelPlacement">After</defaultValue>
+	  		<defaultValue property="labelOrientation">vertical</defaultValue>
+	  		<defaultValue property="verticalAlign">top</defaultValue>
+	  		<defaultValue property="textAlign">center</defaultValue>
+	  		<defaultValue property="fixedWidth">-1</defaultValue>
+	  	</initialization>
+	  </component>
+	  <component id="UI5Table"
+		title="SAPUI5 Table"
+		icon="res/icon.png"
+		handlerType="sapui5"
+		group="sampleutilities"
+		databound="true">
+		<jsInclude>res/js/ui5table.js</jsInclude>
+		<jsInclude>res/js/dstocker/formatTransform.js</jsInclude>
+		<property type="ScriptText" title="On Click" group="Events" id="onclick"/>
+		<property type="int" title="Visible Row Count" id="visibleRowCount"></property>
+		<property type="ResultSet" title="Result Set" id="resultset"/>
+		<initialization>
+			<defaultValue property="visibleRowCount">25</defaultValue>
+			<defaultValue property="HEIGHT">auto</defaultValue>
+			<defaultValue property="WIDTH">auto</defaultValue>
+		</initialization>
+	</component>
 	  <component id="Speedometer" title="Speedometer" tooltip="Displays a speedometer - Antonino Cacace" icon="res/speedometer.png" group="sampleutilities" handlerType="div">
 		<jsInclude>res/js/speedometer.js</jsInclude>
 		<property id="haveNumbers" title="Show Number" type="boolean"/>
@@ -188,7 +255,7 @@
 		group="sampleutilities">
 		<jsInclude>res/js/superImage.js</jsInclude>
 		<property type="String" title="Image Source URI" id="src" />
-		<property type="ScriptText" title="On Click" group="Events" id="onclick"></property>
+		<property type="ScriptText" title="On Click" group="Events" id="onclick"></property>			
 		<initialization>
 			<defaultValue property="HEIGHT">auto</defaultValue>
 			<defaultValue property="WIDTH">auto</defaultValue>
