@@ -1,3 +1,6 @@
+/**
+ *	Test code - Doesn't work yet. 
+ */
 sap.designstudio.sdk.Component.subclass("com.sample.utilities.FoldedPyramid", function() {
 	this.chart = null;
 	

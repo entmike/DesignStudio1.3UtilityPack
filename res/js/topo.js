@@ -1,3 +1,8 @@
+/**
+ * Not a full-featured Addon.  This is an example of how to include d3v3 by using AMD Require module
+ * into Design Studio without disrupting CVOM's d3v2.  d3v3 is required for TopoJSON.
+ */
+
 require.config({
 	paths: {
 		d3: "/aad/zen/mimes/sdk_include/com.sample.utilities/res/js/d3/d3.min",
@@ -17,7 +22,7 @@ require.config({
 	}
 });
 
-//Exception handling for require.js In case of an error it alerts the message. For example if gmaps could not be loaded
+//Exception handling for require.js In case of an error it alerts the message. For example if topoJSON could not be loaded
 require.onError = function (err) {
 	if (err.requireType === 'timeout') {
 		alert("error: "+err);
@@ -90,6 +95,7 @@ sap.designstudio.sdk.Component.subclass("com.sample.utilities.Topo", function() 
     		.attr("width",width)
     		.attr("height",height);
     	
+    	// TODO: Figure out platform URL path so this works beyond local mode.  But this is just for illustration for now.
     	this.d3.json("/aad/zen/mimes/sdk_include/com.sample.utilities/res/js/maps/us.json", function(err, us){
     		
     		svg.insert("path", ".graticule")
@@ -97,11 +103,12 @@ sap.designstudio.sdk.Component.subclass("com.sample.utilities.Topo", function() 
 				.attr("class", "land")
 				.attr("d", path);
     		
+    		
     		svg.insert("path", ".graticule")
 	        	.datum(that.topojson.mesh(us, us.objects.counties, function(a, b) { return a !== b && !(a.id / 1000 ^ b.id / 1000); }))
 	        	.attr("class", "county-boundary")
 	        	.attr("d", path);
-
+    		
     		svg.insert("path", ".graticule")
 	        	.datum(that.topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
 	        	.attr("class", "state-boundary")

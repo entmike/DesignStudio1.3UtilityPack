@@ -1,62 +1,20 @@
 sap.designstudio.sdk.Component.subclass("com.sample.utilities.MenuStrip", function() {
 	// Property setter/getter functions	
     this.autoProperties = {
-    	titles : {
-			value : "",
-			redraw : true
-		},
-		spriteIDs : {
-			value : "",
-			redraw : true
-		},
-		visibilities : {
-			value : "",
-			redraw : true
-		},
-		fixedWidth : {
-    		value : -1,
-    		redraw : true
-    	},
-    	spriteSheet : {
-    		value : "",
-    		redraw : true
-    	},
-    	spriteSheetPerRow : {
-    		value : 0,
-    		redraw : true
-    	},
-    	verticalAlign : {
-    		value : "top",
-    		redraw : true
-    	},
-    	textAlign : {
-    		value : "center",
-    		redraw : true
-    	},
-    	labelOrientation : {
-    		value : "vertical",
-    		redraw : true
-    	},
-    	labelPlacement : {
-    		value : "After",
-    		redraw : true
-    	},
-    	iconWidth : {
-    		value : -1,
-    		redraw : true
-    	},
-    	iconHeight : {
-    		value : -1,
-    		redraw :true
-    	},
-    	labelClicked : {
-    		value : "",
-    		redraw : true
-    	},
-    	buttonClass : {
-    		value : "",
-    		redraw : true
-    	}
+    	titles : {value : ""},
+		spriteIDs : {value : ""},
+		visibilities : {value : "" },
+		fixedWidth : {value : -1 },
+    	spriteSheet : {value : "" },
+    	spriteSheetPerRow : { value : 0 },
+    	verticalAlign : { value : "top" },
+    	textAlign : { value : "center" },
+    	labelOrientation : { value : "vertical" },
+    	labelPlacement : {value : "After" },
+    	iconWidth : { value : -1 },
+    	iconHeight : { value : -1 },
+    	labelClicked : { value : "" },
+    	buttonClass : { redraw : true }
     };
     /*
 	 * Create the aforementioned getter/setter and attach to 'this'.
@@ -86,7 +44,7 @@ sap.designstudio.sdk.Component.subclass("com.sample.utilities.MenuStrip", functi
     		if(this.autoProperties[property].changed && this.autoProperties[property].redraw) redraw = true;
     	}
     	// Determine if a redraw is needed
-    	if(redraw) this.redraw();
+    	this.redraw();
     	// Reset change flags
     	for(var property in this.autoProperties){
     		this.autoProperties[property].changed = false;
@@ -95,7 +53,6 @@ sap.designstudio.sdk.Component.subclass("com.sample.utilities.MenuStrip", functi
     
     this.redraw = function(){
     	var that = this;
-    	//alert("Re");
     	this.$().empty();
     	var list = $("<ul/>");
     	var t = [];
@@ -111,6 +68,14 @@ sap.designstudio.sdk.Component.subclass("com.sample.utilities.MenuStrip", functi
     			textAlign : this.textAlign(),
     			verticalAlign : this.verticalAlign()
     		});
+    		newItem.click(function(text){
+				return function(){
+					$(this).addClass("selected");
+					that.labelClicked(text);
+					that.firePropertiesChanged(["labelClicked"]);
+					that.fireEvent("onclick");
+				};
+			}(t[i]));
     		
     		if(this.buttonClass()) newItem.addClass(this.buttonClass());
     		if(this.labelClicked()==t[i]){
@@ -166,14 +131,7 @@ sap.designstudio.sdk.Component.subclass("com.sample.utilities.MenuStrip", functi
     				verticalAlign : this.verticalAlign()
     			});
     		
-			newItem.click(function(text){
-				return function(){
-					$(this).addClass("selected");
-					that.labelClicked(text);
-					that.firePropertiesChanged(["labelClicked"]);
-					that.fireEvent("onclick");
-				};
-			}(t[i]));
+			
         			
     		switch(this.labelPlacement()){
     			case "After" :{

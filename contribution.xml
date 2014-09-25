@@ -1,38 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdkExtension xmlns="http://www.sap.com/bi/zen/sdk"
-	id="com.sample.utilities"
-	title="Design Studio Utilities"
-	version="1.0"
-	vendor="Mike Howles, Leandro Cardoso, Antonino Cacace"
-	>
-	<group
-		id="sampleutilities"
-		title="Design Studio Utilities"
-	/>
-	<!-- 
-	<component id="CVOMTest" title="CVOM Test" handlerType="cvom" group="sampleutilities" databound="true" >
-		<stdInclude kind="cvom"/>
-		<jsInclude>res/js/CVOMTest.js</jsInclude>
-		<property type="ResultCellSet" title="Chart Selection" id="chartSelection"/>
-	</component>
-	 -->
-	 <!-- 
-	 <component id="FoldedPyramid" title="Folded Pyramid" handlerType = "div" icon="highCharts.png" group="sampleutilities">
-	 	<stdInclude kind="d3"/>
-	 	<jsInclude>res/js/foldedPyramid.js</jsInclude>
-	 	<cssInclude>res/css/foldedPyramid.css</cssInclude>
-	 	<initialization>
-			<defaultValue property="HEIGHT">400</defaultValue>
-			<defaultValue property="WIDTH">300</defaultValue>
-		</initialization>
-	 </component>
-	  -->
-	  <component id="MenuStrip"
-	  	title="Menu Strip"
-	  	icon="res/icon.png"
-	  	handlerType="div"
-	  	group="sampleutilities"
-	  >
+	id="com.sample.utilities" title="Design Studio Utilities" version="1.0"	vendor="Mike Howles, Leandro Cardoso, Antonino Cacace">
+	<group id="sampleutilities"	title="Design Studio Utilities"	tooltip="Mostly usable, but not supported"/>
+	<group id="experimental" title="Design Studio Experiments" tooltip="Conceptual, Unfinished, and/or Buggy - For code reference only"/>
+	<!-- Menu Strip Component -->
+	<component id="MenuStrip" title="Menu Strip" icon="res/icon.png" handlerType="div" group="sampleutilities" >
 	  	<jsInclude>res/js/menustrip.js</jsInclude>
 	  	<cssInclude>res/css/menustrip.css</cssInclude>
 	  	<property id="titles" type="String" title="Titles"/>
@@ -62,10 +34,6 @@
 	  	</property>
 	  	
 	  	<property id="spriteSheetPerRow" type="int" title="Icons Sprites Per Row"/>
-	  	<!-- Didn't get around to finishing
-	  	<property id="spriteSheetHoverOffsetX" type="int" title="Hover Offset X (-1 for no offset)" />
-	  	<property id="spriteSheetHoverOffsetY" type="int" title="Hover Offset Y (-1 for no offset)" />
-	  	 -->
 	  	<property id="iconWidth" type="int" title="Icon Width (px)"/>
 	  	<property id="iconHeight" type="int" title="Icon Height (px)"/>
 	  	<initialization>
@@ -77,11 +45,12 @@
 	  		<defaultValue property="fixedWidth">-1</defaultValue>
 	  	</initialization>
 	  </component>
-	  <component id="UI5Table"
+	  <!-- UI5 Table -->
+	  <component id="UI5Table" 
 		title="SAPUI5 Table"
 		icon="res/icon.png"
 		handlerType="sapui5"
-		group="sampleutilities"
+		group="experimental"
 		databound="true">
 		<jsInclude>res/js/ui5table.js</jsInclude>
 		<jsInclude>res/js/dstocker/formatTransform.js</jsInclude>
@@ -155,7 +124,7 @@
 		       <possibleValue>bottomLeft</possibleValue>
 		       <possibleValue>bottomRight</possibleValue>
 			</property>
-		<property type="String" title="Modal" id="modal" group="Display"> 
+			<property type="String" title="Modal" id="modal" group="Display"> 
 		       <possibleValue>true</possibleValue>
 		       <possibleValue>false</possibleValue>
 			</property>
@@ -167,15 +136,24 @@
 		     <defaultValue property="delay">3</defaultValue> 
 		   </initialization>
 	  </component>
-	  <component id="Topo" title="TopoJSON Test" handlerType = "div" icon="res/map.png" group="sampleutilities">
-	  	<jsInclude>res/js/require/require.js</jsInclude>
+	  <component id="Topo" title="TopoJSON Test" handlerType = "div" icon="res/map.png" group="experimental">
+	  	<stdInclude kind="cvom"/><!-- So we can use Require, not CVOM :P -->
 	  	<jsInclude>res/js/topo.js</jsInclude>
 	  	<cssInclude>res/css/topo.css</cssInclude>
+	  	<property type="String" title="State Colors" id="stateCol"></property>
 	  	<initialization>
 			<defaultValue property="HEIGHT">400</defaultValue>
 			<defaultValue property="WIDTH">300</defaultValue>
 		</initialization>
 	  </component>
+	  <component id="GeoChart" title="Google Geocharts" handlerType = "div" icon="res/map.png" group="experimental" databound="true" propertySheetPath="res/additional_properties_sheet/geoChart.html">
+	 	<jsInclude>http://www.google.com/jsapi?fix</jsInclude><!-- ?fix is to address rewrite bug found in 1.3 SP1, possibly earlier, too -->
+	 	<jsInclude>res/js/geochart.js</jsInclude>
+	 	<initialization>
+			<defaultValue property="HEIGHT">400</defaultValue>
+			<defaultValue property="WIDTH">300</defaultValue>
+		</initialization>
+	 </component>
 	  <component id="PackedCircles" title="Packed Circles" handlerType = "div" icon="res/packedCircles.png" group="sampleutilities" databound="true">
 		  <stdInclude kind="d3"/>
 		  <jsInclude>res/js/packedcircles.js</jsInclude>
@@ -192,14 +170,7 @@
 				<defaultValue property="hideLabels">false</defaultValue>
 		  </initialization>
 	  </component>
-	 <component id="GeoChart" title="Google Geocharts" handlerType = "div" icon="res/map.png" group="sampleutilities">
-	 	<jsInclude>https://www.google.com/jsapi</jsInclude>
-	 	<jsInclude>res/js/geochart.js</jsInclude>
-	 	<initialization>
-			<defaultValue property="HEIGHT">400</defaultValue>
-			<defaultValue property="WIDTH">300</defaultValue>
-		</initialization>
-	 </component>
+
 	<component id="SlideShow" title="Slide Show" handlerType="div" icon="res/doubleSidedTile.png" group="sampleutilities">
 		<jsInclude>res/js/jssor/js/jssor.core.js</jsInclude>
 		<jsInclude>res/js/jssor/js/jssor.utils.js</jsInclude>

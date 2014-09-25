@@ -1,3 +1,6 @@
+/**
+ * Experimental, based of code from David Stocker.  Currently has a bug for when more than one dimension is in rows
+ */
 sap.ui.table.Table.extend("com.sample.utilities.UI5Table", {
 	renderer : {},
 	metadata : {				// Not to be confused with the Data Source metadata property
@@ -50,7 +53,6 @@ sap.ui.table.Table.extend("com.sample.utilities.UI5Table", {
 		return this._rs;
 	},
 	initDesignStudio : function() {
-		alert("hello");
 		// Called by sap.designstudio.sdkui5.Handler  (sdkui5_handler.js)
 	},
 	init : function() {
