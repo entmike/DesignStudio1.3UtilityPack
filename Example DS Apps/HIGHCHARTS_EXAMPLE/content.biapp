@@ -1,0 +1,28 @@
+<bi:biapp bi:version="1200" xmlns:bi="http://xml.sap.com/2011/biml/biapp" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/TR/REC-html40" xmlns:h="http://www.w3.org/TR/REC-html40" xmlns:sdk1="com.sample.highcharts" sdk1:version="1.0">
+	<bi:component name="APPLICATION_PROPERTIES" type="APPLICATION_PROPERTIES">
+		<bi:property name="THEME" value="sap_goldreflection"/>
+	</bi:component>
+	<bi:component name="ROOT" type="ABSOLUTE_LAYOUT_COMPONENT">
+		<bi:component name="HIGHCHARTS_1" type="com_sample_highcharts_HighCharts">
+			<bi:property name="LEFT_MARGIN" value="200"/>
+			<bi:property name="TOP_MARGIN" value="145"/>
+			<bi:property name="WIDTH" value="597"/>
+			<bi:property name="HEIGHT" value="401"/>
+			<bi:property name="groupBy" value="0MEASURES0000000000000009"/>
+			<bi:property name="colsBy" value="0CALMONTH"/>
+			<bi:property name="BOTTOM_MARGIN" value="auto"/>
+			<bi:property name="RIGHT_MARGIN" value="auto"/>
+			<bi:property name="excessDimensions" value="Filter"/>
+			<bi:property name="visMethod" value="Spline Chart"/>
+			<bi:property name="legendLayout" value="vertical"/>
+			<bi:property name="floatLegend" value=""/>
+		</bi:component>
+		<bi:component name="TEXT_1" type="TEXT_COMPONENT">
+			<bi:property name="TEXT" value="This example is using the Dummy Data feature, as otherwise you&apos;d need to bind to BEx or cube data before being able to play with this.  Feel free to create a datasource and bind it to the chart!"/>
+			<bi:property name="LEFT_MARGIN" value="103"/>
+			<bi:property name="TOP_MARGIN" value="72"/>
+			<bi:property name="WIDTH" value="719"/>
+			<bi:property name="HEIGHT" value="48"/>
+		</bi:component>
+	</bi:component>
+</bi:biapp>
