@@ -3,6 +3,17 @@
 	id="com.sample.utilities" title="Design Studio Utilities" version="1.0"	vendor="Mike Howles, Leandro Cardoso, Antonino Cacace">
 	<group id="sampleutilities"	title="Design Studio Utilities"	tooltip="Mostly usable, but not supported"/>
 	<group id="experimental" title="Design Studio Experiments" tooltip="Conceptual, Unfinished, and/or Buggy - For code reference only"/>
+	<!-- Accordion Menu -->
+	<component id="AccordionMenu" title="Accordion Menu" icon="res/icon.png" handlerType="sapui5" group="sampleutilities" propertySheetPath="res/additional_properties_sheet/accordionMenu.html">
+	  	<jsInclude>res/js/accordionMenu.js</jsInclude>
+	  	<cssInclude>res/css/accordionMenu.css</cssInclude>
+	  	<!-- <property type="String" title="Opened Section" id="openedSectionsId"/> -->
+	  	<property type="String" title="Item Config" id="itemConfig"/>
+	  	<initialization>
+			<defaultValue property="HEIGHT">400</defaultValue>
+			<defaultValue property="WIDTH">250</defaultValue>
+		</initialization>
+	</component>
 	<!-- Menu Strip Component -->
 	<component id="MenuStrip" title="Menu Strip" icon="res/icon.png" handlerType="div" group="sampleutilities" >
 	  	<jsInclude>res/js/menustrip.js</jsInclude>
