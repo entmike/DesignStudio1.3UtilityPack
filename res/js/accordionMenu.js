@@ -6,7 +6,6 @@ sap.ui.commons.Accordion.extend("com.sample.utilities.AccordionMenu", {
 			itemConfig : "string",						// JSON section/items config from Design Studio
 			expandedSection : "string",					// Expanded Section by Title
 			selectedItem : "string",					// Item Name by Title
-			fullyQualifiedSelectedItem : "string"		// Section Name-Item Name
 		}
 	},
 	redraw : function(){
