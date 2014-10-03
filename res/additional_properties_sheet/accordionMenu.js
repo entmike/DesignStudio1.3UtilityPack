@@ -24,36 +24,6 @@ sap.designstudio.sdk.PropertyPage.subclass("com.sample.utilities.AccordionMenuPa
 		var sectionTitle = new sap.ui.commons.TextView({text : "Section Title"});
 		var txtSectionTitle = new sap.ui.commons.TextField({value : this._itemConfig[index].title});
 		var itemsLabel = new sap.ui.commons.TextView({text : "Items"});
-		/*
-		var itemsList = new sap.ui.commons.ListBox({
-		});
-		for(var i=0;i<section.items.length;i++){
-			itemsList.addItem(new sap.ui.core.Item({
-				key : section.items[i],
-				text : section.items[i]
-			}));
-		}
-		var btnAddItem = new sap.ui.commons.Button({
-			text : "+"
-		});
-		var btnDelItem = new sap.ui.commons.Button({
-			text : "-",
-			enabled : false
-		});
-		var btnUpItem = new sap.ui.commons.Button({
-			text : "^"
-		});
-		var btnDownItem = new sap.ui.commons.Button({
-			text : "v"
-		});
-		var itemOptions = new sap.ui.commons.layout.HorizontalLayout({
-			content : [btnAddItem, btnDelItem, btnUpItem, btnDownItem]
-		});
-		this._sectionPropertyLayout.addContent(itemOptions);
-		itemsList.attachSelect(this.itemSelected, this);
-		btnAddItem.attachPress(this.itemAdd, this);
-		*/
-		
 		var itemsList = new sap.ui.commons.TextArea({
 			value : section.items.join("\n"),
 			design : sap.ui.core.Design.Monospace,

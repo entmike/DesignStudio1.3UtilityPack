@@ -83,18 +83,8 @@ sap.ui.commons.Accordion.extend("com.sample.utilities.AccordionMenu", {
 	getExpandedSection : function(){
 		return this._expandedSection;
 	},
-	/*
-	setOpenedSectionsId : function(s){
-		//Disable
-		sap.ui.commons.Accordion.prototype.setOpenedSectionsId.apply(this,arguments);
-		//alert(s);
-	},
-	*/
 	initDesignStudio : function() {
 		// Called by sap.designstudio.sdkui5.Handler  (sdkui5_handler.js)
-	},
-	clickHandler : function(){
-		// this.fireDesignStudioEvent("onclick");
 	},
 	sectionOpenHandler : function(oControlEvent){
 		var sid = oControlEvent.getParameter("openSectionId");
