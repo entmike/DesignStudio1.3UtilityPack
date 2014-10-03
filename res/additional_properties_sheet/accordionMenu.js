@@ -1,35 +1,194 @@
 sap.designstudio.sdk.PropertyPage.subclass("com.sample.utilities.AccordionMenuPage",  function() {
 	var that = this;
 	this._itemConfig = [];
-	
+	this._selectedIndex = -1;
+	this._selectedItemIndex = -1;
 	this.componentSelected = function(){
 		this.updateProps();
 	};
+	this.updateSelection = function(oControlEvent){
+		this._selectedIndex = oControlEvent.getParameter("selectedIndex");
+		if(this._selectedIndex == -1){
+			this._btnDelSection.setEnabled(false);
+		}else{
+			this._btnDelSection.setEnabled(true);
+		}
+		this.showSelectionProperties(this._selectedIndex);
+	};
+	this.showSelectionProperties = function(index){
+		this._sectionPropertyLayout.destroyContent();
+		this._selectedItemIndex = -1;
+		if(index<0) return;
+		var section = this._itemConfig[this._selectedIndex];
+		if(!section.items) section.items = [];
+		var sectionTitle = new sap.ui.commons.TextView({text : "Section Title"});
+		var txtSectionTitle = new sap.ui.commons.TextField({value : this._itemConfig[index].title});
+		var itemsLabel = new sap.ui.commons.TextView({text : "Items"});
+		/*
+		var itemsList = new sap.ui.commons.ListBox({
+		});
+		for(var i=0;i<section.items.length;i++){
+			itemsList.addItem(new sap.ui.core.Item({
+				key : section.items[i],
+				text : section.items[i]
+			}));
+		}
+		var btnAddItem = new sap.ui.commons.Button({
+			text : "+"
+		});
+		var btnDelItem = new sap.ui.commons.Button({
+			text : "-",
+			enabled : false
+		});
+		var btnUpItem = new sap.ui.commons.Button({
+			text : "^"
+		});
+		var btnDownItem = new sap.ui.commons.Button({
+			text : "v"
+		});
+		var itemOptions = new sap.ui.commons.layout.HorizontalLayout({
+			content : [btnAddItem, btnDelItem, btnUpItem, btnDownItem]
+		});
+		this._sectionPropertyLayout.addContent(itemOptions);
+		itemsList.attachSelect(this.itemSelected, this);
+		btnAddItem.attachPress(this.itemAdd, this);
+		*/
+		
+		var itemsList = new sap.ui.commons.TextArea({
+			value : section.items.join("\n"),
+			design : sap.ui.core.Design.Monospace,
+			rows : 5,
+			width : "200px",
+			wrapping : sap.ui.core.Wrapping.Off
+		});
+		
+		this._sectionPropertyLayout.addContent(sectionTitle);
+		this._sectionPropertyLayout.addContent(txtSectionTitle);
+		this._sectionPropertyLayout.addContent(itemsLabel);
+		this._sectionPropertyLayout.addContent(itemsList);
+		txtSectionTitle.attachChange(this.sectionTitleChanged, this);
+		itemsList.attachChange(this.itemListChanged, this);
+	};
+	this.sectionTitleChanged = function(oControlEvent){
+		var value = oControlEvent.getParameter("newValue");
+		this._itemConfig[this._selectedIndex].title = value;
+		this.firePropertiesChanged(["itemConfig"]);
+		this.updateProps();
+	};
+	this.itemListChanged = function(oControlEvent){
+		var section = this._itemConfig[this._selectedIndex];
+		if(!section.items) section.items = [];
+		section.items = oControlEvent.getSource().getValue().split("\n");
+		this.firePropertiesChanged(["itemConfig"]);		
+	};
+	this.itemSelected = function(oControlEvent){
+		alert(oControlEvent.getParameter("selectedIndex"));
+	};
 	this.updateProps = function(){
 		this._sectionList.destroyItems();
-		
+		for(var i=0;i<this._itemConfig.length;i++){
+			this._sectionList.addItem(new sap.ui.core.Item({
+				key : this._itemConfig[i].title,
+				text : this._itemConfig[i].title
+			}));
+		}
+		if(this._selectedIndex != -1 && this._selectedIndex < this._itemConfig.length) {
+			this._sectionList.setSelectedIndex(this._selectedIndex);
+			this._btnDelSection.setEnabled(true);
+		}else{
+			this._selectedIndex = -1;
+			this._btnDelSection.setEnabled(false);
+		}
+		this.showSelectionProperties(this._selectedIndex);
 	};
-	
+	this.upSection = function(){
+		var si = this._sectionList.getSelectedIndex();
+		if(si == 0 || si == -1) return;
+		var temp = this._itemConfig[si-1];
+		this._itemConfig[si-1] = this._itemConfig[si];
+		this._itemConfig[si] = temp;
+		this._selectedIndex = si-1;
+		this.firePropertiesChanged(["itemConfig"]);
+		this.updateProps();
+	};
+	this.downSection = function(){
+		var si = this._sectionList.getSelectedIndex();
+		if(si >= this._itemConfig.length-1 || si == - 1) return;
+		var temp = this._itemConfig[si+1];
+		this._itemConfig[si+1] = this._itemConfig[si];
+		this._itemConfig[si] = temp;
+		this._selectedIndex = si+1;
+		this.firePropertiesChanged(["itemConfig"]);
+		this.updateProps();
+	};
+	this.delSection = function(){
+		var si = this._sectionList.getSelectedIndex();
+		if(si==-1) return;
+		
+		this._itemConfig.splice(si,1);
+		this.firePropertiesChanged(["itemConfig"]);
+		this.updateProps();
+	};
+	this.addSection = function(){
+		var newItem = {
+			title : "Section " + (this._itemConfig.length + 1),
+			items : []
+		};
+		this._selectedIndex = this._itemConfig.length;
+		this._itemConfig.push(newItem);
+		this.firePropertiesChanged(["itemConfig"]);
+		this.updateProps();
+	};
 	this.init = function(){
 		// Init
 		this._content = new sap.ui.commons.layout.VerticalLayout({
 			width : "100%"
 		});
-		this.hLayout = new sap.ui.commons.layout.HorizontalLayout({
+		this._hLayout = new sap.ui.commons.layout.HorizontalLayout({
 			
 		});
-		this._content.addContent(this.hLayout);
+		this._content.addContent(this._hLayout);
 		this._sectionList = new sap.ui.commons.ListBox({
-			
+			width : "100%"
 		});
-		this._hLayout.addContent(this._sectionList);
-		// that.firePropertiesChanged(["groupBy"]);
+		this._btnAddSection = new sap.ui.commons.Button({
+			text : "+"
+		});
+		this._btnDelSection = new sap.ui.commons.Button({
+			text : "-",
+			enabled : false
+		});
+		this._btnUpSection = new sap.ui.commons.Button({
+			text : "^"
+		});
+		this._btnDownSection = new sap.ui.commons.Button({
+			text : "v"
+		});
+		this._sectionOptions = new sap.ui.commons.layout.HorizontalLayout({
+			content : [this._btnAddSection, this._btnDelSection, this._btnUpSection, this._btnDownSection]
+		});
+		this._sectionLayout = new sap.ui.commons.layout.VerticalLayout({
+			width : "150px",
+			content : [this._sectionOptions, this._sectionList]
+		});
+		this._sectionPropertyLayout = new sap.ui.commons.layout.VerticalLayout({
+			width : "300px"
+		});
+		this._hLayout.addContent(this._sectionLayout);
+		this._hLayout.addContent(this._sectionPropertyLayout);
+		// Events
+		this._sectionList.attachSelect(this.updateSelection, this);
+		this._btnAddSection.attachPress(this.addSection, this);
+		this._btnDelSection.attachPress(this.delSection, this);
+		this._btnUpSection.attachPress(this.upSection, this);
+		this._btnDownSection.attachPress(this.downSection, this);
+
 		this._content.placeAt($("#content"));
 		
 		this.updateProps();
 	};
 	this.itemConfig = function(s){
-		if( value === undefined){
+		if( s === undefined){
 			return JSON.stringify(this._itemConfig);
 		}else{
 			var o = [];

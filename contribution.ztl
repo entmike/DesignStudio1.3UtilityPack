@@ -1,161 +1,21 @@
-class com.sample.utilities.Collection extends Component {
-	/* xmlhttp.js -- Simple XMLHttpRequest for Rhino
-	 * by M.Hiyama (hiyama{at}chimaira{dot}org) 2005
-	 * URL: http://www.chimaira.org/
-	 */
-
-	
-	String fetch(String urlStream) {*
-		//importPackage(java.io, java.net);
-		var html = "Success";
-		//Packages.java;
-		//java.net;
-		//java.io;
-		//var url = Packages.java.net.URL(urlStream);
-		var ArrayList = java.util.ArrayList;
-		var url = java.net.URL;
-		//java.lang.System.out.println("hi");
-	/*var url = new URL(urlStr);
-		var urlStream = url.openStream();
-		var reader = new BufferedReader(new InputStreamReader(urlStream, "latin1"));
-		 
-		var html = "";
-		var line;
-		while (line = reader.readLine()) {
-			if (line == null) break;
-			html += line;
-		}*/
-return eval;
-		return Packages.com.sap.ip.bi.zen.rt.framework.jsengine.rhino.RhinoJsEngine;
+class com.sample.utilities.AccordionMenu extends Component {
+	/**
+	Get section clicked.
+	*/
+	String getSectionClicked() {*
+		return this.expandedSection;
 	*}
-	String test(String s) {*
-		// String a = new String("12a");
-		var o = this.getOwner();	// Seems to get owner
-		var o = this;	
-		var a = "";	
-		for(p in o){
-			a = a + p + " | ";
-		}
-		if(s!="") return this[s];
-		return a;
+	/**
+	Get item clicked.
+	*/
+	String getItemClicked() {*
+		return this.selectedItem;
 	*}
-	String test2(String s) {*
-		var s2 = eval(s);
-		return s2;
-	*}
-	void setItems(/*labels*/ String labels, /*values*/ String values) {*
-		var items = [];
-		var l = labels.split(",");
-		var v = values.split(",");
-		while(l.length<v.length) l.push("");
-		while(v.length<l.length) v.push("0");
-		for(var i=0;i<l.length;i++){
-			items.push({
-				label : l[i],
-				value : v[i]
-			})
-		}
-		this.items = JSON.stringify(items);
-	*}
-	String getLabels() {*
-		var s = this.items;
-		var items = eval(s);
-		var a = [];
-		for(var i=0;i<items.length;i++){
-			a.push(items[i].label);
-		}
-		return a.join(",");
-	*}
-	String getValues() {*
-		var s = this.items;
-		var items = eval(s);
-		var a = [];
-		for(var i=0;i<items.length;i++){
-			a.push(items[i].value);
-		}
-		return a.join(",");
-	*}
-	void sortByLabel() {*
-		var s = this.items;
-		var a = eval(s);
-		a.sort(function(a,b){
-			return a.label>b.label;
-		});
-		this.items = JSON.stringify(a);
-	*}
-	void sortByLabelDescending() {*
-		var s = this.items;
-		var a = eval(s);
-		a.sort(function(a,b){
-			return (b.label>a.label);
-		});
-		this.items = JSON.stringify(a);
-	*}
-	
-	void sortByValue() {*
-		var s = this.items;
-		var a = eval(s);
-		a.sort(function(a,b){
-			var newA = parseFloat(a.value);
-			var newB = parseFloat(b.value);
-			return newA-newB;
-		});
-		this.items = JSON.stringify(a);
-	*}
-	
-	void sortByValueDescending() {*
-		var s = this.items;
-		var a = eval(s);
-		a.sort(function(a,b){
-			var newA = parseFloat(a.value);
-			var newB = parseFloat(b.value);
-			return newB-newA;
-		});
-		this.items = JSON.stringify(a);
-	*}
-	
-	void sortByValue() {*
-		var s = this.items;
-		var a = eval(s);
-		a.sort(function(a,b){
-			var newA = parseFloat(a.value);
-			var newB = parseFloat(b.value);
-			return newA-newB;
-		});
-		this.items = JSON.stringify(a);
-	*}
-	int getLength() {*
-		var s = this.items;
-		var a = [];
-		if(s!="") a = eval(s);
-		return a.length;
-	*}
-	String getLabel( /* index */ int index) {*
-		var s = this.items;
-		var a = eval(s);
-		var r = "Blank";
-		if(a.length>index){
-			r = a[index].label;
-		}
-		return r;
-	*}
-	String getValueAsString( /* index */ int index) {*
-		var s = this.items;
-		var a = eval(s);
-		var r = "Blank";
-		if(a.length>index){
-			r = a[index].value;
-		}
-		return r;
-	*}
-	float getValue( /* index */ int index) {*
-		var s = this.items;
-		var a = eval(s);
-		var r = 0.0;
-		if(a.length>index){
-			r = a[index].value;
-		}
-		return r;
+	/**
+	Get fully qualified item clicked.
+	*/
+	String getFullyQualifiedItemClicked() {*
+		return this.expandedSection + "-" + this.selectedItem;
 	*}
 	
 }

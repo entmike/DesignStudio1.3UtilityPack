@@ -9,7 +9,11 @@
 		<link href="propertiesPane.css"	type="text/css" rel="stylesheet"></link>
 	</head>
 	<script type="text/javascript">
-		new com.sample.utilities.AccordionMenuPage();
+	try{
+		new com.sample.utilities.AccordionMenuPage();	
+	}catch(e){
+		alert(e);
+	}	
 	</script>
 	<body class="sapUiBody">
 		<div id="content" class="sapUiBody"></div>				

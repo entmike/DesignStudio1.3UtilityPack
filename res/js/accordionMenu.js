@@ -3,17 +3,27 @@ sap.ui.commons.Accordion.extend("com.sample.utilities.AccordionMenu", {
 	renderer : {},
 	metadata : {				// Not to be confused with the Data Source metadata property
 		properties : {
-			itemConfig : "string"	// JSON section/items config from Design Studio 
+			itemConfig : "string",						// JSON section/items config from Design Studio
+			expandedSection : "string",					// Expanded Section by Title
+			selectedItem : "string",					// Item Name by Title
+			fullyQualifiedSelectedItem : "string"		// Section Name-Item Name
 		}
 	},
 	redraw : function(){
 		var that = this;
 		this.destroySections();
+		var sectionID = -1;
 		for(var i=0;i<this._itemConfig.length;i++){
 			var sec = this._itemConfig[i];
-			var section = new sap.ui.commons.AccordionSection("section" + (i+1),{
+			var collapsed = true;
+			if(this._expandedSection == sec.title) {
+				sectionID = i;
+				collapsed = false;
+			}
+			var section = new sap.ui.commons.AccordionSection(this.getId()+"-section" + i,{
 				title : sec.title || "Section " + (i+1),
-				tooltip : sec.tooltip || ""
+				tooltip : sec.tooltip || "",
+				collapsed : collapsed
 			});
 			if(sec.items){
 				var listbox = new sap.ui.commons.ListBox({
@@ -28,67 +38,79 @@ sap.ui.commons.Accordion.extend("com.sample.utilities.AccordionMenu", {
 							}
 						}
 						var item = oControlEvent.getParameter("selectedItem");
-						alert(item.getKey());
+						that._selectedItem = item.getText();
+						that.fireDesignStudioPropertiesChanged(["selectedItem"]);
+						that.fireDesignStudioEvent("onitemselect");
 					}
 				});
 				section.addContent(listbox);
+				var selectedIndex = -1;
 				for(var j=0;j<sec.items.length;j++){
 					var item = sec.items[j];
 					listbox.addItem(new sap.ui.core.Item({
 						key : (sec.title || "Section " + (i+1)) + "-" + item,
 						text : item
 					}));
+					if(item==this._selectedItem && !collapsed) selectedIndex = j;
 				}
+				if(!collapsed) listbox.setSelectedIndex(selectedIndex);
 			}
 			this.addSection(section);
 		}
+		if(sectionID!=-1) this.setOpenedSectionsId(this.getId() + "-section" + sectionID);
 	},
 	setItemConfig : function(s){
 		var o = [];
 		if(s && s!="") o = jQuery.parseJSON(s);
 		this._itemConfig = o;
 		this.redraw();
+		return this;
 	},
 	getItemConfig : function(){
 		return JSON.stringify(this._itemConfig);
 	},
-	setOpenedSectionsId : function(s){
-		sap.ui.commons.Accordion.prototype.setOpenedSectionsId.apply(this,arguments);
-		alert(s);
+	setSelectedItem : function(s){
+		this._selectedItem = s;
+		this.redraw();
 	},
+	getSelectedItem : function(){
+		return this._selectedItem;
+	},
+	setExpandedSection : function(s){
+		this._expandedSection = s;
+		this.redraw();
+	},
+	getExpandedSection : function(){
+		return this._expandedSection;
+	},
+	/*
+	setOpenedSectionsId : function(s){
+		//Disable
+		sap.ui.commons.Accordion.prototype.setOpenedSectionsId.apply(this,arguments);
+		//alert(s);
+	},
+	*/
 	initDesignStudio : function() {
 		// Called by sap.designstudio.sdkui5.Handler  (sdkui5_handler.js)
 	},
 	clickHandler : function(){
 		// this.fireDesignStudioEvent("onclick");
 	},
+	sectionOpenHandler : function(oControlEvent){
+		var sid = oControlEvent.getParameter("openSectionId");
+		this._expandedSection = "";
+		var sections = this.getSections();
+		for(var i=0;i<sections.length;i++){
+			if(sections[i].getId()==sid) {
+				this._expandedSection = sections[i].getTitle();
+			}
+		}
+		this.fireDesignStudioPropertiesChanged(["expandedSection"]);
+		this.fireDesignStudioEvent("onsectionchange");
+	},
 	init : function(){
 		sap.ui.commons.Accordion.prototype.init.apply(this,arguments);
+		this.attachSectionOpen(this.sectionOpenHandler, this);
 		this.addStyleClass("utilPackAccordionMenu");
-		return;
-		//Building Section 1
-		var oSection1 = new sap.ui.commons.AccordionSection( "section1" );		
-		oSection1.setTitle("Section 1");
-		oSection1.setTooltip("Section 1");
-		//oSection1.setMaxHeight("100px");
-		for (var i=0 ; i < 5 ; i++){		  		  
-			var oCheckBox1 = new sap.ui.commons.CheckBox( "CheckBox1"+i );
-			oCheckBox1.setText("CheckBox1 "+i);
-			oSection1.addContent( oCheckBox1);		  
-			var oLabel1 = new sap.ui.commons.Label( "Label1"+i );
-			oLabel1.setText("Label 1 "+i);			  		 
-			oSection1.addContent( oLabel1);
-		}						
-		this.addSection( oSection1 );
-					
-		//Building Section 2
-		var oSection2 = new sap.ui.commons.AccordionSection( "section2");
-		oSection2.setTitle("Section 2");		
-		for (var i=0 ; i < 5 ; i++){		  
-			var oCheckBox2 = new sap.ui.commons.CheckBox( "CheckBox2"+i );
-			oCheckBox2.setText("CheckBox2 "+i);
-			oSection2.addContent( oCheckBox2);
-		}		
-		this.addSection( oSection2 );		
 	}
 });
