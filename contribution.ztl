@@ -9,12 +9,8 @@ class com.sample.utilities.AccordionMenu extends Component {
 	</code>
 	</example>
 	 */
-	void addSection (
-			/**Element Key (must be unique)*/String elementKey, 
-			/**Element text*/String elementText, 
-			/**Image URL, if not set, no image*/String imageUrl) {*		
+	void addSection (/**Section text*/String elementText {*		
 		
-		this.addElement(elementKey, elementText, imageUrl, "ROOT", false);
 	*}
 	/**
 	Get section clicked.
