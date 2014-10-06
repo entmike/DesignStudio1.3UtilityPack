@@ -4,7 +4,7 @@ class com.sample.utilities.AccordionMenu extends Component {
  	<example>
 	You want to add a section
 	<code>
-	ACCORDIONMENU_1.addSection("ROOT_KEY1", "First Root Element", "");<br>
+	ACCORDIONMENU_1.addSection("Section Name", "");<br>
 	<br>
 	</code>
 	</example>
