@@ -1,16 +1,82 @@
 class com.sample.utilities.AccordionMenu extends Component {
 	/** Add a section
-
  	<example>
-	You want to add a section
+	Add a section called 'Sales KPIs'
 	<code>
-	ACCORDIONMENU_1.addSection("Section Name", "");<br>
-	<br>
+	ACCORDIONMENU_1.addSection("Sales KPIs");<br>
 	</code>
 	</example>
 	 */
-	void addSection (/**Section text*/String elementText {*		
-		
+	void addSection (/*Section Title*/String sectionTitle {*		
+		var o = eval(this.itemConfig);
+		o.push({
+			title:sectionTitle,
+			items:[]
+		});
+		itemConfig = JSON.stringify(o);
+	*}
+	/** Remove a section
+ 	<example>
+	Remove a section called 'Sales KPIs'
+	<code>
+	ACCORDIONMENU_1.removeSection("Sales KPIs");<br>
+	</code>
+	</example>
+	 */
+	void removeSection (/*Section Title*/String sectionTitle {*		
+		var o = eval(this.itemConfig);
+		var matchIndex = -1;
+		for(var i=0;i<o.length;i++){
+			if(o[i].title == sectionTitle) matchIndex = i;
+		}
+		if(matchIndex>-1) o.splice(matchIndex,1);
+		itemConfig = JSON.stringify(o);
+	*}
+	/** Add an item to a section.  Will add the Section if it does not yet exist.
+ 	<example>
+	Add an item called 'Monthly Sales' to section called 'Sales KPIs'
+	<code>
+	ACCORDIONMENU_1.addItem("Sales KPIs","Monthly Sales");<br>
+	</code>
+	</example>
+	 */
+	void addItem (/*Section Title*/String sectionTitle, /*Item Title*/String itemTitle) {*		
+		var o = eval(this.itemConfig);
+		var matchIndex = -1;
+		for(var i=0;i<o.length;i++){
+			if(o[i].title == sectionTitle) matchIndex = i;
+		}
+		if(matchIndex == -1 ){	// Add section for the lazy
+			this.addSection(sectionTitle);
+			o = eval(this.itemConfig);
+			matchIndex = o.length-1;
+		}
+		o[matchIndex].items.push(itemTitle);
+		itemConfig = JSON.stringify(o);
+	*}
+	/** Removes an item from a section.
+ 	<example>
+	Remove an item called 'Monthly Sales' from section called 'Sales KPIs'
+	<code>
+	ACCORDIONMENU_1.removeItem("Sales KPIs","Monthly Sales");<br>
+	</code>
+	</example>
+	 */
+	void removeItem (/*Section Title*/String sectionTitle, /*Item Title*/String itemTitle) {*		
+		var o = eval(this.itemConfig);
+		var matchIndex = -1;
+		for(var i=0;i<o.length;i++){
+			if(o[i].title == sectionTitle) matchIndex = i;
+		}
+		if(matchIndex != -1 ){
+			var items = o[matchIndex].items;
+			var itemIndex = -1;
+			for(var i=0;i<items.length;i++){
+				if(items[i]==itemTitle) itemIndex = i;
+			}
+			if(itemIndex>-1) items.splice(itemIndex,1);
+			itemConfig = JSON.stringify(o);
+		}		
 	*}
 	/**
 	Get section clicked.
