@@ -7,12 +7,40 @@ class com.sample.utilities.AccordionMenu extends Component {
 	</code>
 	</example>
 	 */
-	void addSection (/*Section Title*/String sectionTitle {*		
+	void addSection (/*Section Title*/String sectionTitle) {*		
 		var o = eval(this.itemConfig);
 		o.push({
 			title:sectionTitle,
 			items:[]
 		});
+		itemConfig = JSON.stringify(o);
+	*}
+	/** Remove All Sections
+ 	<example>
+	Remove all sections
+	<code>
+	ACCORDIONMENU_1.removeAllSections();<br>
+	</code>
+	</example>
+	 */
+	void removeAllSections () {*		
+		itemConfig = JSON.stringify([]);
+	*}
+	/** Remove All Items in a section
+ 	<example>
+	Remove all sections in section 'Sales KPIs'
+	<code>
+	ACCORDIONMENU_1.removeAllItems("Sales KPIs");<br>
+	</code>
+	</example>
+	 */
+	void removeAllItems (/*Section Title*/String sectionTitle) {*		
+		var o = eval(this.itemConfig);
+		var matchIndex = -1;
+		for(var i=0;i<o.length;i++){
+			if(o[i].title == sectionTitle) matchIndex = i;
+		}
+		if(matchIndex>-1) o[matchIndex].items = [];
 		itemConfig = JSON.stringify(o);
 	*}
 	/** Remove a section
@@ -23,7 +51,7 @@ class com.sample.utilities.AccordionMenu extends Component {
 	</code>
 	</example>
 	 */
-	void removeSection (/*Section Title*/String sectionTitle {*		
+	void removeSection (/*Section Title*/String sectionTitle) {*		
 		var o = eval(this.itemConfig);
 		var matchIndex = -1;
 		for(var i=0;i<o.length;i++){
