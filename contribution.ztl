@@ -1,4 +1,21 @@
 class com.sample.utilities.AccordionMenu extends Component {
+	/** Add a section
+
+ 	<example>
+	You want to add a section
+	<code>
+	ACCORDIONMENU_1.addSection("ROOT_KEY1", "First Root Element", "");<br>
+	<br>
+	</code>
+	</example>
+	 */
+	void addSection (
+			/**Element Key (must be unique)*/String elementKey, 
+			/**Element text*/String elementText, 
+			/**Image URL, if not set, no image*/String imageUrl) {*		
+		
+		this.addElement(elementKey, elementText, imageUrl, "ROOT", false);
+	*}
 	/**
 	Get section clicked.
 	*/
