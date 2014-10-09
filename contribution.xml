@@ -10,6 +10,10 @@
 	  	<property type="String" title="Tile Config" id="tileConfig" visible="false"/>
 	  	<property type="String" title="Selected Tile" id="selectedTile" visible="false"/>
 	  	<property type="ScriptText" title="On Tile Select" id="onTileSelect"/>
+	  	<initialization>
+	  		<defaultValue property="WIDTH">575</defaultValue>
+			<defaultValue property="HEIGHT">575</defaultValue>
+	  	</initialization>
 	</component>
 	
 	<!-- PopOver Button Component -->
