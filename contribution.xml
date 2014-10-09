@@ -3,6 +3,15 @@
 	id="com.sample.utilities" title="Design Studio Utilities" version="1.0"	vendor="Mike Howles, Leandro Cardoso, Antonino Cacace">
 	<group id="sampleutilities"	title="Design Studio Utilities"	tooltip="Mostly usable, but not supported"/>
 	<group id="experimental" title="Design Studio Experiments" tooltip="Conceptual, Unfinished, and/or Buggy - For code reference only"/>
+	<!-- LaunchPad Component -->
+	<component id="LaunchPad" title="Launch Pad" icon="res/icon.png" handlerType="sapui5" group="sampleutilities" 
+		propertySheetPath="res/additional_properties_sheet/launchPad.html">
+	  	<jsInclude>res/js/LaunchPad.js</jsInclude>
+	  	<property type="String" title="Tile Config" id="tileConfig" visible="false"/>
+	  	<property type="String" title="Selected Tile" id="selectedTile" visible="false"/>
+	  	<property type="ScriptText" title="On Tile Select" id="onTileSelect"/>
+	</component>
+	
 	<!-- PopOver Button Component -->
 	<component id="PopOverButton" title="PopOver Button" icon="res/icon.png" handlerType="sapui5" group="sampleutilities" 
 		propertySheetPath="res/additional_properties_sheet/popoverButton.html">
