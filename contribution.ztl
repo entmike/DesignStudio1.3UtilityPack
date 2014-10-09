@@ -1,3 +1,12 @@
+class com.sample.utilities.TileProperty {
+  String title;
+  String info;
+  String icon;
+  String number;
+  String numberUnit;
+  String valueState;
+}
+
 class com.sample.utilities.LaunchPad extends Component {
 	/**
 	Gets Tile Selected
@@ -16,6 +25,33 @@ class com.sample.utilities.LaunchPad extends Component {
 	void removeAllTiles () {*		
 		this.tileConfig = JSON.stringify([]);
 	*}
+	
+	com.sample.utilities.TileProperty getTileProperty(/*Title*/String title){*
+		var r = {
+			title : "",
+			info : "",
+			icon : "",
+			number : "",
+			numberUnit : "",
+			valueState : ""
+		}
+		var o = eval(this.tileConfig);
+		var matchIndex = -1;
+		for(var i=0;i<o.length;i++){
+			if(o[i].title == title) matchIndex = i;
+		}
+		if(matchIndex>-1){
+			var tileConf = o[matchIndex];
+			r.title = tileConf.title;
+			r.info = tileConf.info;
+			r.icon = tileConf.info;
+			r.number = tileConf.number;
+			r.numberUnit = tileConf.numberUnit;
+			r.valueState = tileConf.valueState;
+		}
+		return r;
+	*}
+	
 	/** Adds or Updates a Tile (if title already exists)
  	<example>
 	Add/Update a tile called "Sales"
