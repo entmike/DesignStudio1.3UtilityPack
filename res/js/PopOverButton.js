@@ -22,6 +22,9 @@ sap.m.Button.extend("com.sample.utilities.PopOverButton", {
 			selectedItem : "string"		// Selected Popover Item
 		}
 	},
+	setType : function(s){
+		// Fix 1.3 SP0 bug '"sdkui5" is not a valid entry of the enumeration for property "type" of Element'
+	},
 	setSelectedItem : function(s){
 		this._selectedItem = s;
 	},
