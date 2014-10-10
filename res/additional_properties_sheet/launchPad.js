@@ -18,6 +18,7 @@ sap.designstudio.sdk.PropertyPage.subclass("com.sample.utilities.LaunchPadPage",
 		if(index<0) return;
 		var tile = this._tileConfig[this._selectedIndex];
 		this.txtTitle.setValue(tile.title);
+		this.txtStyleClass.setValue(tile.styleClass);
 		this.txtInfo.setValue(tile.info);
 		this.txtIcon.setValue(tile.icon);
 		this.txtNumber.setValue(tile.number);
@@ -26,6 +27,7 @@ sap.designstudio.sdk.PropertyPage.subclass("com.sample.utilities.LaunchPadPage",
 	};
 	this.tileConfigChanged = function(oControlEvent){
 		this._tileConfig[this._selectedIndex].title = this.txtTitle.getValue();
+		this._tileConfig[this._selectedIndex].styleClass = this.txtStyleClass.getValue();
 		this._tileConfig[this._selectedIndex].info = this.txtInfo.getValue();
 		this._tileConfig[this._selectedIndex].icon = this.txtIcon.getValue();
 		this._tileConfig[this._selectedIndex].number = this.txtNumber.getValue();
@@ -81,6 +83,7 @@ sap.designstudio.sdk.PropertyPage.subclass("com.sample.utilities.LaunchPadPage",
 	this.addTile = function(){
 		var newItem = {
 			title : "Tile " + (this._tileConfig.length + 1),
+			styleClass : "",
 			info : "Info",
 			icon : "sap-icon://action",
 			number : "123",
@@ -132,6 +135,10 @@ sap.designstudio.sdk.PropertyPage.subclass("com.sample.utilities.LaunchPadPage",
 		this.lblTitle = new sap.ui.commons.TextView({text : "Tile Title"});
 		this.txtTitle = new sap.ui.commons.TextField({});		
 		this.txtTitle.attachChange(this.tileConfigChanged, this);
+		// Title
+		this.lblStyleClass = new sap.ui.commons.TextView({text : "CSS Class"});
+		this.txtStyleClass = new sap.ui.commons.TextField({});		
+		this.txtStyleClass.attachChange(this.tileConfigChanged, this);
 		// Info
 		this.lblInfo = new sap.ui.commons.TextView({text : "Info"});
 		this.txtInfo = new sap.ui.commons.TextField({});		
@@ -172,6 +179,8 @@ sap.designstudio.sdk.PropertyPage.subclass("com.sample.utilities.LaunchPadPage",
 		// Layout
 		this._tilePropertyLayout.addContent(this.lblTitle);
 		this._tilePropertyLayout.addContent(this.txtTitle);
+		this._tilePropertyLayout.addContent(this.lblStyleClass);
+		this._tilePropertyLayout.addContent(this.txtStyleClass);
 		this._tilePropertyLayout.addContent(this.lblInfo);
 		this._tilePropertyLayout.addContent(this.txtInfo);
 		this._tilePropertyLayout.addContent(this.lblValueState);

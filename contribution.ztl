@@ -33,7 +33,8 @@ class com.sample.utilities.LaunchPad extends Component {
 			icon : "",
 			number : "",
 			numberUnit : "",
-			valueState : ""
+			valueState : "",
+			styleClass : ""
 		}
 		var o = eval(this.tileConfig);
 		var matchIndex = -1;
@@ -48,6 +49,7 @@ class com.sample.utilities.LaunchPad extends Component {
 			r.number = tileConf.number;
 			r.numberUnit = tileConf.numberUnit;
 			r.valueState = tileConf.valueState;
+			r.styleClass = tileConf.styleClass;
 		}
 		return r;
 	*}
@@ -65,7 +67,8 @@ class com.sample.utilities.LaunchPad extends Component {
 			/*Icon*/optional String icon, 
 			/*Number*/optional String number, 
 			/*Number Unit*/optional String numberUnit,
-			/*Value State*/optional String valueState) {*		
+			/*Value State*/optional String valueState,
+			/*CSS Class*/optional String styleClass) {*		
 		var o = eval(this.tileConfig);
 		var tile = {
 			title: title,
@@ -73,7 +76,8 @@ class com.sample.utilities.LaunchPad extends Component {
 			icon: icon,
 			number: number,
 			numberUnit: numberUnit,
-			valueState : valueState || "None"
+			valueState : valueState || "None",
+			styleClass : styleClass
 		};	
 		var matchIndex = -1;
 		for(var i=0;i<o.length;i++){
