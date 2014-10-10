@@ -47,6 +47,8 @@
 			<possibleValue>Bottom</possibleValue>
 	  	</property>
 	  	<initialization>
+	  		<defaultValue property="WIDTH">48</defaultValue>
+			<defaultValue property="HEIGHT">48</defaultValue>
 	  		<defaultValue property="showTitle">true</defaultValue>
 	  		<defaultValue property="icon">sap-icon://menu2</defaultValue>
 	  		<defaultValue property="buttonType">Default</defaultValue>
