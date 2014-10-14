@@ -70,6 +70,7 @@ class com.sample.utilities.LaunchPad extends Component {
 			/*Value State*/optional String valueState,
 			/*CSS Class*/optional String styleClass) {*		
 		var o = eval(this.tileConfig);
+		if(!o) o = [];
 		var tile = {
 			title: title,
 			info: info,
@@ -100,6 +101,7 @@ class com.sample.utilities.LaunchPad extends Component {
 	 */
 	void removeTile (/*Tile Title*/String title) {*		
 		var o = eval(this.tileConfig);
+		if(!o) o = [];
 		var matchIndex = -1;
 		for(var i=0;i<o.length;i++){
 			if(o[i].title == title) matchIndex = i;
