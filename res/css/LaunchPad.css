@@ -1,26 +1,26 @@
   /* Good Formatting */
-  .utilPackLaunchPad.RGB .good .sapMStdTileIconDiv,
-  .utilPackLaunchPad.RGB .good .sapMStdTileNumDiv .sapMStdTileNum,
-  .utilPackLaunchPad.RGB .good .sapMStdTileNumDiv .sapMStdTileNumS,
-  .utilPackLaunchPad.RGB .good .sapMStdTileNumDiv .sapMStdTileNumM, 
-  .utilPackLaunchPad.RGB .good .sapMStdTileNumDiv .sapMStdTileNumUnit
+  .utilPackLaunchPad.RYG .good .sapMStdTileIconDiv,
+  .utilPackLaunchPad.RYG .good .sapMStdTileNumDiv .sapMStdTileNum,
+  .utilPackLaunchPad.RYG .good .sapMStdTileNumDiv .sapMStdTileNumS,
+  .utilPackLaunchPad.RYG .good .sapMStdTileNumDiv .sapMStdTileNumM, 
+  .utilPackLaunchPad.RYG .good .sapMStdTileNumDiv .sapMStdTileNumUnit
   {
     color : #009966;
   }
   /* Medium Formatting */
-  .utilPackLaunchPad.RGB .medium .sapMStdTileIconDiv,
-  .utilPackLaunchPad.RGB .medium .sapMStdTileNumDiv .sapMStdTileNum,
-  .utilPackLaunchPad.RGB .medium .sapMStdTileNumDiv .sapMStdTileNumS,
-  .utilPackLaunchPad.RGB .medium .sapMStdTileNumDiv .sapMStdTileNumM, 
-  .utilPackLaunchPad.RGB .medium .sapMStdTileNumDiv .sapMStdTileNumUnit
+  .utilPackLaunchPad.RYG .medium .sapMStdTileIconDiv,
+  .utilPackLaunchPad.RYG .medium .sapMStdTileNumDiv .sapMStdTileNum,
+  .utilPackLaunchPad.RYG .medium .sapMStdTileNumDiv .sapMStdTileNumS,
+  .utilPackLaunchPad.RYG .medium .sapMStdTileNumDiv .sapMStdTileNumM, 
+  .utilPackLaunchPad.RYG .medium .sapMStdTileNumDiv .sapMStdTileNumUnit
   {
     color : #EBAD00
   }
   /* Bad Formatting */
-  .utilPackLaunchPad.RGB .bad .sapMStdTileIconDiv,
-  .utilPackLaunchPad.RGB .bad .sapMStdTileNumDiv .sapMStdTileNum,
-  .utilPackLaunchPad.RGB .bad .sapMStdTileNumDiv .sapMStdTileNumS,
-  .utilPackLaunchPad.RGB .bad .sapMStdTileNumDiv .sapMStdTileNumM, 
-  .utilPackLaunchPad.RGB .bad .sapMStdTileNumDiv .sapMStdTileNumUnit  {
+  .utilPackLaunchPad.RYG .bad .sapMStdTileIconDiv,
+  .utilPackLaunchPad.RYG .bad .sapMStdTileNumDiv .sapMStdTileNum,
+  .utilPackLaunchPad.RYG .bad .sapMStdTileNumDiv .sapMStdTileNumS,
+  .utilPackLaunchPad.RYG .bad .sapMStdTileNumDiv .sapMStdTileNumM, 
+  .utilPackLaunchPad.RYG .bad .sapMStdTileNumDiv .sapMStdTileNumUnit  {
     color : #FF0000
   }
