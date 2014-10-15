@@ -3,10 +3,28 @@
 	id="com.sample.utilities" title="Design Studio Utilities" version="1.0"	vendor="Mike Howles, Leandro Cardoso, Antonino Cacace">
 	<group id="sampleutilities"	title="Design Studio Utilities"	tooltip="Mostly usable, but not supported"/>
 	<group id="experimental" title="Design Studio Experiments" tooltip="Conceptual, Unfinished, and/or Buggy - For code reference only"/>
+	<!-- Switch Component -->
+	<component id="Switch" title="Switch" icon="res/rocket.png" handlerType="sapui5" group="experimental">
+	  	<jsInclude>res/js/Switch.js</jsInclude>
+	  	<property type="String" title="Custom Text Off" id="customTextOff"/>
+	  	<property type="String" title="Custom Text On" id="customTextOn"/>
+	  	<property type="String" title="Type" id="switchType">
+	  		<possibleValue>Default</possibleValue>
+	  		<possibleValue>AcceptReject</possibleValue>
+	  	</property>
+	  	<property type="boolean" title="Enabled" id="enabled"/>
+	  	<property type="boolean" title="State" id="state"/>
+	  	<property type="String" title="Status" id="status"/>
+	  	<property type="ScriptText" title="Change" id="onChange"/>
+	  	<initialization>
+	  		<defaultValue property="switchType">Default</defaultValue>
+	  	</initialization>
+	</component>
 	<!-- LaunchPad Component -->
 	<component id="LaunchPad" title="Launch Pad" icon="res/rocket.png" handlerType="sapui5" group="sampleutilities" 
 		propertySheetPath="res/additional_properties_sheet/launchPad.html">
 	  	<jsInclude>res/js/LaunchPad.js</jsInclude>
+	  	<cssInclude>res/css/LaunchPad.css</cssInclude>
 	  	<property type="String" title="Tile Config" id="tileConfig" visible="false"/>
 	  	<property type="String" title="Selected Tile" id="selectedTile" visible="false"/>
 	  	<property type="ScriptText" title="On Tile Select" id="onTileSelect"/>

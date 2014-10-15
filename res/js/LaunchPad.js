@@ -33,6 +33,7 @@ sap.m.TileContainer.extend("com.sample.utilities.LaunchPad", {
 	},
 	init : function(){
 		sap.m.TileContainer.prototype.init.apply(this,arguments);
+		this.addStyleClass("utilPackLaunchPad");
 		this.drawTiles();
 	},
 	drawTiles : function(){

@@ -6,7 +6,20 @@ class com.sample.utilities.TileProperty {
   String numberUnit;
   String valueState;
 }
-
+class com.sample.utilities.Switch extends Component {
+	/**
+	Gets Switch State
+	*/
+	String getState() {*
+		return this.state;
+	*}
+	/**
+	Gets Switch Status
+	*/
+	String getStatus() {*
+		return this.status;
+	*}
+}
 class com.sample.utilities.LaunchPad extends Component {
 	/**
 	Gets Tile Selected
@@ -58,7 +71,7 @@ class com.sample.utilities.LaunchPad extends Component {
  	<example>
 	Add/Update a tile called "Sales"
 	<code>
-	LAUNCHPAD_1.addTile("Sales", "YTD", "sap-icon://money-bills", "1234", "USD");<br>
+	LAUNCHPAD_1.addTile("Sales", "YTD", "sap-icon://money-bills", "1234", "USD", "good");<br>
 	</code>
 	</example>
 	 */
