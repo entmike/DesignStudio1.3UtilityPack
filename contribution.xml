@@ -3,6 +3,47 @@
 	id="com.sample.utilities" title="Design Studio Utilities" version="1.0"	vendor="Mike Howles, Leandro Cardoso, Antonino Cacace">
 	<group id="sampleutilities"	title="Design Studio Utilities"	tooltip="Mostly usable, but not supported"/>
 	<group id="experimental" title="Design Studio Experiments" tooltip="Conceptual, Unfinished, and/or Buggy - For code reference only"/>
+	<group id="fiori" title="Fiori-Like Components" tooltip="sap.m Fiori-like Components"/>
+	<!-- sap.m Page Header -->
+	<component id="MPageHeader" title="sap.m Page Header" icon="res/rocket.png" handlerType="sapui5" group="fiori" >
+	  	<jsInclude>res/js/MPageHeader.js</jsInclude>
+	  	<cssInclude>res/css/MPageHeader.css</cssInclude>
+	  	<property id="title" type="String" title="Title"/>
+	  	<property id="showNavButton" type="boolean" title="Show Nav Button"/>
+	  	<property id="icon" type="String" title="Nav Button Icon"/>
+	  	<property type="ScriptText" title="On Nav" id="onnav"/>
+	 	<initialization>
+	 		<defaultValue property="title">Page Title</defaultValue>
+	 	</initialization>
+	 </component>
+	<!-- sap.m Button Component -->
+	<component id="MButton" title="sap.m Button" icon="res/rocket.png" handlerType="sapui5" group="fiori" >
+	  	<jsInclude>res/js/MButton.js</jsInclude>
+	  	<property id="icon" type="String" title="Icon"/>
+	  	<property id="text" type="String" title="Text"/>
+	  	<!-- <property id="activeIcon" type="String" title="Active Icon"/> -->
+	  	<property id="enabled" type="boolean" title="Enabled"/>
+	  	<property id="iconFirst" type="boolean" title="Icon First"/>
+	  	<property type="ScriptText" title="On Click" id="onclick"/>
+	  	<property id="buttonType" type="String" title="Type">
+	  		<possibleValue>Default</possibleValue>
+	  		<possibleValue>Transparent</possibleValue>
+	  		<possibleValue>Accept</possibleValue>
+	  		<possibleValue>Back</possibleValue>
+	  		<possibleValue>Emphasized</possibleValue>
+	  		<possibleValue>Reject</possibleValue>
+	  		<possibleValue>Up</possibleValue>
+	  	</property>
+	  	<initialization>
+	  		<defaultValue property="WIDTH">48</defaultValue>
+			<defaultValue property="HEIGHT">48</defaultValue>
+	  		<defaultValue property="showTitle">true</defaultValue>
+	  		<defaultValue property="enabled">true</defaultValue>
+	  		<defaultValue property="icon">sap-icon://action</defaultValue>
+	  		<defaultValue property="iconFirst">true</defaultValue>
+	  		<defaultValue property="buttonType">Default</defaultValue>
+	  	</initialization>
+	</component>
 	<!-- Switch Component -->
 	<component id="Switch" title="Switch" icon="res/rocket.png" handlerType="sapui5" group="experimental">
 	  	<jsInclude>res/js/Switch.js</jsInclude>
@@ -21,7 +62,7 @@
 	  	</initialization>
 	</component>
 	<!-- Browser Popup -->
-	<component id="BrowserPopup" title="Browser Popup" icon="res/rocket.png" handlerType="sapui5" group="sampleutilities">
+	<component id="BrowserPopup" title="Browser Popup" icon="res/rocket.png" handlerType="sapui5" group="fiori">
 	  	<jsInclude>res/js/BrowserPopup.js</jsInclude>
 	  	<cssInclude>res/css/BrowserPopup.css</cssInclude>
 	  	<property type="String" title="URL" id="url"/>
@@ -65,7 +106,7 @@
 	  	
 	</component>
 	<!-- LaunchPad Component -->
-	<component id="LaunchPad" title="Launch Pad" icon="res/rocket.png" handlerType="sapui5" group="sampleutilities" 
+	<component id="LaunchPad" title="Launch Pad" icon="res/rocket.png" handlerType="sapui5" group="fiori" 
 		propertySheetPath="res/additional_properties_sheet/launchPad.html">
 	  	<jsInclude>res/js/LaunchPad.js</jsInclude>
 	  	<cssInclude>res/css/LaunchPad.css</cssInclude>
@@ -79,7 +120,7 @@
 	</component>
 	
 	<!-- PopOver Button Component -->
-	<component id="PopOverButton" title="PopOver Button" icon="res/icon.png" handlerType="sapui5" group="sampleutilities" 
+	<component id="PopOverButton" title="PopOver Button" icon="res/rocket.png" handlerType="sapui5" group="fiori" 
 		propertySheetPath="res/additional_properties_sheet/popoverButton.html">
 	  	<jsInclude>res/js/PopOverButton.js</jsInclude>
 	  	<property id="title" type="String" title="Title"/>

@@ -6,6 +6,25 @@ class com.sample.utilities.TileProperty {
   String numberUnit;
   String valueState;
 }
+class com.sample.utilities.MPageHeader extends Component {
+	/* Shows or hides the back button. */
+	void setShowNavButton(/* If true, then the back button is shown, else it is hidden */ boolean visible) {*
+		this.showNavButton = visible;
+	*}
+	/* Returns true if the back button is shown, else false. */
+	boolean getShowNavButton() {*
+		return this.showNavButton;
+	*}
+	/* Sets the title. */
+	void setTitle(/* Title */ String title) {*
+		this.title = title;
+	*}	
+	/* Returns the title. */
+	String getTitle() {*
+		return this.title;
+	*}
+	
+}
 class com.sample.utilities.BrowserPopup extends Component {
 	/**
 	Invoke Click event
