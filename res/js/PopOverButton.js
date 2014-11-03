@@ -1,4 +1,5 @@
 jQuery.sap.require("sap.m.Button");
+jQuery.sap.require("sap.m.ActionSheet");
 sap.m.Button.extend("com.sample.utilities.PopOverButton", {
 	_buttonType : "",
 	_title : "",
@@ -89,17 +90,18 @@ sap.m.Button.extend("com.sample.utilities.PopOverButton", {
 	},
 	dsClick : function(oControlEvent){
 		if(this._popover) this._popover.destroy();
-		this._popover = new sap.m.Popover({
+		this._popover = new sap.m.ActionSheet({
 			title : this._title,
-			showHeader : this._showHeader,
+			//showHeader : this._showHeader,
 			placement : this._placement,
-			contentWidth : this._popoverWidth,
-			contentHeight : this._popoverHeight
+			//contentWidth : this._popoverWidth,
+			//contentHeight : this._popoverHeight
 		});
-		var list = new sap.m.List({
+		/*var list = new sap.m.List({
 			
 		});
 		list.attachSelectionChange(this.listSelect,this);
+		*/
 		for(var i=0;i<this._items.length;i++){
 			var item = this._items[i];
 			var title = item;
@@ -109,15 +111,23 @@ sap.m.Button.extend("com.sample.utilities.PopOverButton", {
 				icon = opts[0];
 				title = opts.slice(1).join("");
 			}
-			var listItem = new sap.m.StandardListItem({
+			var actionButton = new sap.m.Button({
+				text : title,
+			    //type : sap.m.ListType.Active,
+			    icon : icon
+			});
+			actionButton.attachBrowserEvent("click",function(t){return function(oControlEvent){this.listSelect(t,oControlEvent);};}(title),this);
+			/*var listItem = new sap.m.StandardListItem({
 			    title : title,
 			    type : sap.m.ListType.Active,
 			    icon : icon
 			});
 			listItem.attachBrowserEvent("click",function(t){return function(oControlEvent){this.listSelect(t,oControlEvent);};}(title),this);
 			list.addItem(listItem);
+			*/
+			this._popover.addButton(actionButton);
 		};
-		this._popover.addContent(list);
+		//this._popover.addContent(list);
 		this._popover.openBy(this);
 	},
 	init : function(){

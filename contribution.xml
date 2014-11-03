@@ -5,13 +5,17 @@
 	<group id="experimental" title="Design Studio Experiments" tooltip="Conceptual, Unfinished, and/or Buggy - For code reference only"/>
 	<group id="fiori" title="Fiori-Like Components" tooltip="sap.m Fiori-like Components"/>
 	<!-- sap.m Page Header -->
-	<component id="MPageHeader" title="sap.m Page Header" icon="res/rocket.png" handlerType="sapui5" group="fiori" >
+	<component id="MPageHeader" title="sap.m Page Header" icon="res/rocket.png" handlerType="sapui5" group="fiori" 
+		propertySheetPath="res/additional_properties_sheet/pageHeader.html">
 	  	<jsInclude>res/js/MPageHeader.js</jsInclude>
 	  	<cssInclude>res/css/MPageHeader.css</cssInclude>
 	  	<property id="title" type="String" title="Title"/>
+	  	<property id="itemConfig" type="String" title="Item Config" visible="false"/>
 	  	<property id="showNavButton" type="boolean" title="Show Nav Button"/>
-	  	<property id="icon" type="String" title="Nav Button Icon"/>
-	  	<property type="ScriptText" title="On Nav" id="onnav"/>
+	  	<property type="String" title="Selected Item" id="selectedItem" visible="false"/>
+	  	<property type="String" title="Selected Header of Item" id="selectedHeader" visible="false"/>
+	  	<property type="ScriptText" title="On Item Select" id="onitemselect"/>  	
+	  	<property type="ScriptText" title="On Navigation" id="onnav"/>
 	 	<initialization>
 	 		<defaultValue property="title">Page Title</defaultValue>
 	 	</initialization>
@@ -118,7 +122,6 @@
 			<defaultValue property="HEIGHT">575</defaultValue>
 	  	</initialization>
 	</component>
-	
 	<!-- PopOver Button Component -->
 	<component id="PopOverButton" title="PopOver Button" icon="res/rocket.png" handlerType="sapui5" group="fiori" 
 		propertySheetPath="res/additional_properties_sheet/popoverButton.html">
