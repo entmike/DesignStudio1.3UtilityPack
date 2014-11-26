@@ -14,7 +14,6 @@ sap.ui.table.Table.extend("com.sample.utilities.UI5Table", {
 	setResultset : function(o){
 		this._rs = o;
 		var flat = reformatIntoSimpleTuples(o,"text");
-		//	alert(JSON.stringify(flat));
 		this.destroyColumns();
 		// Column creation
 		for (var i = 0; i < flat.headerTuple.length; i++) {
@@ -57,7 +56,12 @@ sap.ui.table.Table.extend("com.sample.utilities.UI5Table", {
 	},
 	init : function() {
 		sap.ui.table.Table.prototype.init.apply(this,arguments);
+		this.attachRowSelectionChange(this.rowChangeHandler,this);
 	},
+	rowChangeHandler : function(oControlEvent){
+		this.fireDesignStudioEvent("onclick");
+	},
+
 	// Override onclick setter to then attach/detach Design Studio event raising.
 	setOnclick : function(s){
 		if(s && s != ""){		// If there's onclick BIAL, then add an event listener (and get a hand cursor).

@@ -16,8 +16,21 @@ function reformatIntoSimpleTuples(zenResultSetJSON, displayType){
 	 */		
 	
 	displayType = typeof displayType !== 'undefined' ? displayType : 'text';
-
 	var tuples = zenResultSetJSON.tuples;
+	var headerData = zenResultSetJSON.dimensions;
+	var headerTuple = [];
+	var rowTuples = [];
+	
+	var returnObj = {
+		headerTuple : [],
+		rowTuples : []
+	};
+	
+	if(!tuples || !headerData) {
+		// No data source
+		return returnObj;
+	}
+	
 	var lastTuple = tuples[tuples.length -1];
 	var lenDataGridXAxis = lastTuple[1];
 	var lenDataGridYAxis = lastTuple[2];
@@ -30,7 +43,6 @@ function reformatIntoSimpleTuples(zenResultSetJSON, displayType){
 	
 	var longestDimSet = 0;  	//This is the number of data columns
 	var numberOfDataTuples = 0;	//This is the number of tuples
-	var headerData = zenResultSetJSON.dimensions;
 	for (var i = 0; i < headerData.length; i++) {
 		var members = [];
 		var perDimMembers = [];
@@ -53,7 +65,7 @@ function reformatIntoSimpleTuples(zenResultSetJSON, displayType){
 			}else{
 				rowMeasures.push(perDimMembers);
 			}
-		} else{
+		}else{
 			// we have a dimension
 			for (var j = 0; j < headerData[i].members.length; j++) {
 				if (displayType == 'text'){
@@ -82,7 +94,6 @@ function reformatIntoSimpleTuples(zenResultSetJSON, displayType){
 	//Build the table data tuples.
 	//  A single tuple will contain all of the row labels and the 
 	var nNthDataPoint = -1;
-	var rowTuples = [];
 	for (var i = 0; i < numberOfDataTuples; i++) {
 		var rowTuple = [];
 
@@ -91,7 +102,7 @@ function reformatIntoSimpleTuples(zenResultSetJSON, displayType){
 			if (typeof(rowDimensions[j][i]) != "undefined"){
 				rowTuple.push(rowDimensions[j][i]);
 			} else{
-				rowTuple.push("");
+				rowTuple.push("?");
 			}
 		}
 		for (var j = 0; j < rowMeasures.length; j++) {
@@ -120,8 +131,6 @@ function reformatIntoSimpleTuples(zenResultSetJSON, displayType){
 	
 	
 	// Build the Table Headers
-	
-	var headerTuple = [];
 	// The initial entries (directly above the row dim/measure members on the left side of the table) are blank
 	if (typeof(rowTuples[0]) != "undefined"){
 		if (rowTuples[0].length > longestDimSet){
@@ -161,7 +170,7 @@ function reformatIntoSimpleTuples(zenResultSetJSON, displayType){
 		}
 	}
 	
-	//The lengths of the table headers whould now be normalized
+	//The lengths of the table headers would now be normalized
 	//compress all of the "stacked" header rows into a single row.
 	for (var i = 0; i < longestDimSet; i++) {
 		var currentHeader = "";
@@ -183,9 +192,7 @@ function reformatIntoSimpleTuples(zenResultSetJSON, displayType){
 		}
 		headerTuple.push(currentHeader);
 	}
-	
-	return {
-		headerTuple : headerTuple,
-		rowTuples : rowTuples
-	};
+	returnObj.headerTuple = headerTuple;
+	returnObj.rowTuples = rowTuples;
+	return returnObj;
 }

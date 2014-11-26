@@ -4,6 +4,80 @@
 	<group id="sampleutilities"	title="Design Studio Utilities"	tooltip="Mostly usable, but not supported"/>
 	<group id="experimental" title="Design Studio Experiments" tooltip="Conceptual, Unfinished, and/or Buggy - For code reference only"/>
 	<group id="fiori" title="Fiori-Like Components" tooltip="sap.m Fiori-like Components"/>
+	<!-- Progress Set Component -->
+	<component id="ProgressSet"
+		title="Progress Set"
+		tooltip="Set of Progress Bar-like indicators"
+		icon="res/highCharts.png"
+		handlerType="div"
+		group="sampleutilities" 
+		propertySheetPath="res/additional_properties_sheet/progressSet.html">
+	  	<stdInclude kind="d3"/>
+	  	<jsInclude>res/js/ProgressSet.js</jsInclude>
+	  	<cssInclude>res/css/ProgressSet.css</cssInclude>
+	  	<property type="String" title="Bar Config" id="barConfig" visible="false"/>
+	  	<property type="String" title="Selected Bar" id="selectedBar" visible="false"/>
+	  	<property type="String" title="Orientation" id="orientation" visible="true">
+	  		<possibleValue>horizontal</possibleValue>
+	  		<possibleValue>vertical</possibleValue>
+	  	</property>
+		<property type="boolean" title="In-Line Labels" id="inlineLabels" visible="true"/>
+	  	<property type="boolean" title="Gradient is Full Width" id="gradientFullWidth" visible="true"/>
+	  	<property type="float" title="Gradient Start (0.00 - 1.00)" id="gradientStart" visible="true"/>
+	  	<property type="float" title="Gradient Start Opacity (0.00 - 1.00)" id="gradientStartOpacity" visible="true"/>
+	  	<property type="Color" title="Gradient Start Color" id="gradientStartColor" visible="true"/>
+	  	<property type="float" title="Gradient Stop (0.00 - 1.00)" id="gradientStop" visible="true"/>
+	  	<property type="float" title="Gradient Stop Opacity (0.00 - 1.00)" id="gradientStopOpacity" visible="true"/>
+	  	<property type="Color" title="Gradient Stop Color" id="gradientStopColor" visible="true"/>
+	  	<property type="float" title="Bar Fill Opacity (0.00 - 1.00)" id="barFillOpacity" visible="true"/>
+	  	<property type="int" title="Bar Roundness" id="barRoundness" visible="true"/>
+	  	<property type="int" title="Bar Height (-1 = auto height)" id="barHeight" visible="true"/>
+	  	<property type="int" title="Label Width" id="labelWidth" visible="true"/>
+	  	<property type="ScriptText" title="On Bar Select" id="onBarSelect"/>
+	  	<initialization>
+	  		<defaultValue property="orientation">horizontal</defaultValue>
+	  		<defaultValue property="barConfig">[{&quot;title&quot;:&quot;Measure&quot;,&quot;fillColor&quot;:&quot;auto&quot;,&quot;number&quot;:&quot;10&quot;,&quot;numberUnit&quot;:&quot;USD&quot;,&quot;styleClass&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Measure1&quot;,&quot;fillColor&quot;:&quot;auto&quot;,&quot;number&quot;:&quot;15&quot;,&quot;numberUnit&quot;:&quot;USD&quot;,&quot;styleClass&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Measure2&quot;,&quot;fillColor&quot;:&quot;auto&quot;,&quot;number&quot;:&quot;30&quot;,&quot;numberUnit&quot;:&quot;USD&quot;,&quot;styleClass&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Measure3&quot;,&quot;fillColor&quot;:&quot;auto&quot;,&quot;number&quot;:&quot;20&quot;,&quot;numberUnit&quot;:&quot;USD&quot;,&quot;styleClass&quot;:&quot;&quot;},{&quot;title&quot;:&quot;Measure4&quot;,&quot;fillColor&quot;:&quot;auto&quot;,&quot;number&quot;:&quot;45&quot;,&quot;numberUnit&quot;:&quot;USD&quot;,&quot;styleClass&quot;:&quot;&quot;}]</defaultValue>
+	  		<defaultValue property="inlineLabels">false</defaultValue>
+	  		<defaultValue property="gradientFullWidth">false</defaultValue>
+	  		<defaultValue property="barFillOpacity">1</defaultValue>
+	  		<defaultValue property="barRoundness">5</defaultValue>
+	  		<defaultValue property="barHeight">-1</defaultValue>
+	  		<defaultValue property="labelWidth">150</defaultValue>
+	  		<defaultValue property="gradientStart">.15</defaultValue>
+	  		<defaultValue property="gradientStartOpacity">.35</defaultValue>
+	  		<defaultValue property="gradientStartColor">#FFFFFF</defaultValue>
+	  		<defaultValue property="gradientStop">.85</defaultValue>
+	  		<defaultValue property="gradientStopColor">#FFFFFF</defaultValue>
+	  		<defaultValue property="gradientStopOpacity">.05</defaultValue>
+	  		<defaultValue property="WIDTH">400</defaultValue>
+			<defaultValue property="HEIGHT">200</defaultValue>
+	  	</initialization>
+	</component>
+	<!-- 1.4 Datasource Test -->
+	<component id="DataTest" 
+		title="Data Source Test" 
+		handlerType="datasource"
+		icon="res/database.png"
+		newInstancePrefix="DS_TEST"
+		propertySheetPath="res/additional_properties_sheet/dataTest.html">
+		<jsInclude>res/js/dataTest.js</jsInclude>
+		<property type="String" title="Data" id="data"/>
+		<property type="String" title="Mutators" id="mutators"/>
+		<property type="int" title="Number of Dimensions" id="kfIndex"/>
+		<property type="boolean" title="Measures in Rows" id="swap"/>
+		<initialization>
+			<defaultValue property="kfIndex">2</defaultValue>
+			<defaultValue property="swap">false</defaultValue>
+			<defaultValue property="data">Region,Year,Sales,Quantity|East,2011,100,5|West,2011,75,7</defaultValue>
+			<defaultValue property="mutators">[1,1,1]</defaultValue>
+		</initialization>
+	</component>
+	<!-- UI5 Colored Box -->
+	<component id="MColoredBox" title="UI5 Colored Box" handlerType="sapui5" group="experimental">
+		<jsInclude>res/js/MColoredBox.js</jsInclude>
+		<property type="String" title="Content" id="content"/>
+		<property type="String" title="Color" id="color"/>
+	</component>
 	<!-- sap.m Page Header -->
 	<component id="MPageHeader" title="sap.m Page Header" icon="res/rocket.png" handlerType="sapui5" group="fiori" 
 		propertySheetPath="res/additional_properties_sheet/pageHeader.html">
@@ -66,7 +140,12 @@
 	  	</initialization>
 	</component>
 	<!-- Browser Popup -->
-	<component id="BrowserPopup" title="Browser Popup" icon="res/rocket.png" handlerType="sapui5" group="fiori">
+	<component id="BrowserPopup"
+		tooltip="In-App Modal Browser Pop-Up"
+		title="Browser Popup"
+		icon="res/rocket.png"
+		handlerType="sapui5"
+		group="fiori">
 	  	<jsInclude>res/js/BrowserPopup.js</jsInclude>
 	  	<cssInclude>res/css/BrowserPopup.css</cssInclude>
 	  	<property type="String" title="URL" id="url"/>
@@ -107,10 +186,14 @@
 	  		<defaultValue property="browserWidth">80%</defaultValue>
 	  		<defaultValue property="browserHeight">80%</defaultValue>
 	  	</initialization>
-	  	
 	</component>
-	<!-- LaunchPad Component -->
-	<component id="LaunchPad" title="Launch Pad" icon="res/rocket.png" handlerType="sapui5" group="fiori" 
+	<!-- Fiori LaunchPad Component -->
+	<component id="LaunchPad"
+		title="Launch Pad"
+		tooltip="Fiori-Inspired LaunchPad/Tile Container"
+		icon="res/rocket.png"
+		handlerType="sapui5"
+		group="fiori" 
 		propertySheetPath="res/additional_properties_sheet/launchPad.html">
 	  	<jsInclude>res/js/LaunchPad.js</jsInclude>
 	  	<cssInclude>res/css/LaunchPad.css</cssInclude>
@@ -122,8 +205,13 @@
 			<defaultValue property="HEIGHT">575</defaultValue>
 	  	</initialization>
 	</component>
-	<!-- PopOver Button Component -->
-	<component id="PopOverButton" title="PopOver Button" icon="res/rocket.png" handlerType="sapui5" group="fiori" 
+	<!-- Fiori PopOver Button Component -->
+	<component id="PopOverButton" 
+		title="PopOver Button" 
+		tooltip="Fiori-Inspired PopOver/Action Sheet button menu"
+		icon="res/rocket.png" 
+		handlerType="sapui5" 
+		group="fiori" 
 		propertySheetPath="res/additional_properties_sheet/popoverButton.html">
 	  	<jsInclude>res/js/PopOverButton.js</jsInclude>
 	  	<property id="title" type="String" title="Title"/>
@@ -163,7 +251,7 @@
 	  		<defaultValue property="placement">Auto</defaultValue>
 	  	</initialization>
 	</component>
-	<!-- Accordion Menu -->
+	<!-- UI5 Accordion Menu -->
 	<component id="AccordionMenu" title="Accordion Menu" 
 		icon="res/accordion.png" 
 		handlerType="sapui5" 
@@ -182,8 +270,8 @@
 			<defaultValue property="WIDTH">250</defaultValue>
 		</initialization>
 	</component>
-	<!-- Menu Strip Component -->
-	<component id="MenuStrip" title="Menu Strip" icon="res/icon.png" handlerType="div" group="sampleutilities" >
+	<!-- Menu Strip/List Selector -->
+	<component id="MenuStrip" title="Menu List Selector" icon="res/burger.png" handlerType="div" group="sampleutilities" >
 	  	<jsInclude>res/js/menustrip.js</jsInclude>
 	  	<cssInclude>res/css/menustrip.css</cssInclude>
 	  	<property id="titles" type="String" title="Titles"/>
@@ -224,25 +312,8 @@
 	  		<defaultValue property="fixedWidth">-1</defaultValue>
 	  	</initialization>
 	  </component>
-	  <!-- UI5 Table -->
-	  <component id="UI5Table" 
-		title="SAPUI5 Table"
-		icon="res/icon.png"
-		handlerType="sapui5"
-		group="experimental"
-		databound="true">
-		<jsInclude>res/js/ui5table.js</jsInclude>
-		<jsInclude>res/js/dstocker/formatTransform.js</jsInclude>
-		<property type="ScriptText" title="On Click" group="Events" id="onclick"/>
-		<property type="int" title="Visible Row Count" id="visibleRowCount"></property>
-		<property type="ResultSet" title="Result Set" id="resultset"/>
-		<initialization>
-			<defaultValue property="visibleRowCount">25</defaultValue>
-			<defaultValue property="HEIGHT">auto</defaultValue>
-			<defaultValue property="WIDTH">auto</defaultValue>
-		</initialization>
-	</component>
-	  <component id="Speedometer" title="Speedometer" tooltip="Displays a speedometer - Antonino Cacace" icon="res/speedometer.png" group="sampleutilities" handlerType="div">
+	  <!-- (Community Sourced) Speedometer -->
+	  <component id="Speedometer" title="Speedometer" tooltip="Displays a speedometer - by Antonino Cacace" icon="res/speedometer.png" group="sampleutilities" handlerType="div">
 		<jsInclude>res/js/speedometer.js</jsInclude>
 		<property id="haveNumbers" title="Show Number" type="boolean"/>
 		<property type="int" title="Number of Big Ticks" id="numOfBigTicks"/>
@@ -315,6 +386,25 @@
 		     <defaultValue property="delay">3</defaultValue> 
 		   </initialization>
 	  </component>
+	  <!-- (Experimental) UI5 Table -->
+	  <component id="UI5Table" 
+		title="SAPUI5 Table"
+		icon="res/icon.png"
+		handlerType="sapui5"
+		group="experimental"
+		databound="true">
+		<jsInclude>res/js/ui5table.js</jsInclude>
+		<jsInclude>res/js/dstocker/formatTransform.js</jsInclude>
+		<property type="ScriptText" title="On Click" group="Events" id="onclick"/>
+		<property type="int" title="Visible Row Count" id="visibleRowCount"></property>
+		<property type="ResultSet" title="Result Set" id="resultset"/>
+		<initialization>
+			<defaultValue property="visibleRowCount">25</defaultValue>
+			<defaultValue property="HEIGHT">auto</defaultValue>
+			<defaultValue property="WIDTH">auto</defaultValue>
+		</initialization>
+	</component>
+	<!-- (Experimental) TopoJSON Test -->
 	  <component id="Topo" title="TopoJSON Test" handlerType = "div" icon="res/map.png" group="experimental">
 	  	<stdInclude kind="cvom"/><!-- So we can use Require, not CVOM :P -->
 	  	<jsInclude>res/js/topo.js</jsInclude>
@@ -325,6 +415,7 @@
 			<defaultValue property="WIDTH">300</defaultValue>
 		</initialization>
 	  </component>
+	  <!-- (Experimental/POC) Google GeoCharts -->
 	  <component id="GeoChart" title="Google Geocharts" handlerType = "div" icon="res/map.png" group="experimental" databound="true" propertySheetPath="res/additional_properties_sheet/geoChart.html">
 	 	<jsInclude>http://www.google.com/jsapi?fix</jsInclude><!-- ?fix is to address rewrite bug found in 1.3 SP1, possibly earlier, too -->
 	 	<jsInclude>res/js/geochart.js</jsInclude>
@@ -350,7 +441,12 @@
 		  </initialization>
 	  </component>
 
-	<component id="SlideShow" title="Slide Show" handlerType="div" icon="res/doubleSidedTile.png" group="sampleutilities">
+	<component id="SlideShow" 
+		tooltip="Jssor Slide Show"
+		title="Slide Show"
+		handlerType="div"
+		icon="res/doubleSidedTile.png"
+		group="sampleutilities">
 		<jsInclude>res/js/jssor/js/jssor.core.js</jsInclude>
 		<jsInclude>res/js/jssor/js/jssor.utils.js</jsInclude>
 		<jsInclude>res/js/jssor/js/jssor.slider.js</jsInclude>
@@ -398,8 +494,9 @@
 		</initialization>
 	</component>
 	<component id="SuperImage"
-		title="Super Image"
+		title="Base64 Image Encoder"
 		icon="res/superImage.png"
+		tooltip="Handy Base-64 encoder property sheet (requires IE10+ for design-time)"
 		handlerType="sapui5"
 		propertySheetPath="res/additional_properties_sheet/superImage.html"
 		group="sampleutilities">
@@ -413,14 +510,15 @@
 		</initialization>
 	</component>
 	<component id="HTMLTemplate"
-		title="HTML Template"
-		icon="res/icon.png"
+		title="Rapid Prototyping Injection"
+		tooltip="HTML/JS Injection - Not recommended for production use!"
+		icon="res/html5.png"
 		handlerType="div"
 		propertySheetPath="res/additional_properties_sheet/additional_properties_sheet.html"
 		group="sampleutilities">
 		<jsInclude>res/js/HTMLTemplate.js</jsInclude>
 		<property id="HTML" type="String" title="HTML" group="Display" />
-		<property id="afterInit" type="String" title="After Init (JS)" group="Display" />
+		<property id="afterInit" type="String" title="JavaScript" group="Display" />
 		<property type="String" title="Placeholder 1" id="term1"></property>
 		<property type="String" title="Replacement 1" id="replacement1"></property>
 		
