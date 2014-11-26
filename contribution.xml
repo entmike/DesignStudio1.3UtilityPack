@@ -53,25 +53,6 @@
 			<defaultValue property="HEIGHT">200</defaultValue>
 	  	</initialization>
 	</component>
-	<!-- 1.4 Datasource Test -->
-	<component id="DataTest" 
-		title="Data Source Test" 
-		handlerType="datasource"
-		icon="res/database.png"
-		newInstancePrefix="DS_TEST"
-		propertySheetPath="res/additional_properties_sheet/dataTest.html">
-		<jsInclude>res/js/dataTest.js</jsInclude>
-		<property type="String" title="Data" id="data"/>
-		<property type="String" title="Mutators" id="mutators"/>
-		<property type="int" title="Number of Dimensions" id="kfIndex"/>
-		<property type="boolean" title="Measures in Rows" id="swap"/>
-		<initialization>
-			<defaultValue property="kfIndex">2</defaultValue>
-			<defaultValue property="swap">false</defaultValue>
-			<defaultValue property="data">Region,Year,Sales,Quantity|East,2011,100,5|West,2011,75,7</defaultValue>
-			<defaultValue property="mutators">[1,1,1]</defaultValue>
-		</initialization>
-	</component>
 	<!-- UI5 Colored Box -->
 	<component id="MColoredBox" title="UI5 Colored Box" handlerType="sapui5" group="experimental">
 		<jsInclude>res/js/MColoredBox.js</jsInclude>
