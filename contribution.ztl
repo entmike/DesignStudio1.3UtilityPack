@@ -127,7 +127,7 @@ class com.sample.utilities.ProgressSet extends Component {
 		barConfig = JSON.stringify(o);
 	*}
 }
-class com.sample.utilities.DataTest extends Component {
+class com.sample.utilities.DataTest extends SdkDataSource {
 	/**
 	 * Set a mutator for a measure by index (starting at 0)
 	 * <example>
